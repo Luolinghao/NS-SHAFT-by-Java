@@ -3,7 +3,6 @@ package main.java.base;
 import main.java.constant.Direction;
 import main.java.constant.EntityConstant;
 import main.java.content.platform.BasePlatform;
-import main.java.content.platform.SpikePlatform;
 
 import java.awt.*;
 

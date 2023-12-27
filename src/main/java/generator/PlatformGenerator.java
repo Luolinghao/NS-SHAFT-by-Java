@@ -26,12 +26,14 @@ public class PlatformGenerator {
         switch (type) {
             case FAKE:
                 platform = new FakePlatform(x,FrameConstant.FRAME_HEIGHT);
+                PropGenerator.build(platform);
                 break;
             case SPIKE:
                 platform = new SpikePlatform(x,FrameConstant.FRAME_HEIGHT );
                 break;
             case NORMAL:
                 platform = new NormalPlatform(x,FrameConstant.FRAME_HEIGHT);
+
                 break;
         }
         return platform;

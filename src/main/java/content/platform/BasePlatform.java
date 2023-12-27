@@ -2,15 +2,17 @@ package main.java.content.platform;
 
 import main.java.base.BaseEntity;
 import main.java.constant.Direction;
-import main.java.constant.EntityConstant;
 import main.java.constant.PlatformConstant;
 import main.java.constant.PlatformType;
+import main.java.content.substance.Prop;
 
 import java.awt.*;
 
 public abstract class BasePlatform extends BaseEntity {
 
     private PlatformType type;
+
+    private Prop prop;
 
     /**
      * BasePlatform的构造函数
@@ -52,5 +54,13 @@ public abstract class BasePlatform extends BaseEntity {
 
     public void setType(PlatformType type) {
         this.type = type;
+    }
+
+    public Prop getProp() {
+        return prop;
+    }
+
+    public void setProp(Prop prop) {
+        this.prop = prop;
     }
 }

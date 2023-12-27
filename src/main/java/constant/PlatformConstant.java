@@ -8,7 +8,7 @@ public class PlatformConstant {
 
     public static final int HEIGHT = 16;
 
-    public static final int DEFAULT_Y_SPEED = 10;
+    public static final int DEFAULT_Y_SPEED = -10;
 
     public static final int DEFAULT_X_SPEED = 0;
 
