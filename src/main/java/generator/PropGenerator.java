@@ -4,6 +4,7 @@ import main.java.constant.*;
 import main.java.content.platform.BasePlatform;
 import main.java.content.substance.Coin;
 import main.java.content.substance.Prop;
+import main.java.content.substance.recover;
 import main.java.service.Service;
 
 public class PropGenerator {
@@ -21,6 +22,16 @@ public class PropGenerator {
         switch (type) {
             case COIN :
                 prop = new Coin(buildX,buildY);
+                prop.moveWithPlatform(platform);
+                platform.setProp(prop);
+                break;
+            case RECOVER:
+                prop = new recover(buildX,buildY);
+                prop.moveWithPlatform(platform);
+                platform.setProp(prop);
+                break;
+            case SHIELD:
+                prop = new recover(buildX,buildY);
                 prop.moveWithPlatform(platform);
                 platform.setProp(prop);
                 break;
