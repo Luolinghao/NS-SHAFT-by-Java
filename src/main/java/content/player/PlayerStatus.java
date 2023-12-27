@@ -10,6 +10,15 @@ public class PlayerStatus implements IDraw {
     private Attribute hp;
 
     private PlayerState status;
+    private boolean haveShield = false;
+
+    public boolean isHaveShield() {
+        return haveShield;
+    }
+
+    public void setHaveShield(boolean haveShield) {
+        this.haveShield = haveShield;
+    }
 
     public PlayerStatus() {
         hp = new Attribute(10,0,10);

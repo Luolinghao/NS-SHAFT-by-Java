@@ -3,7 +3,10 @@ package main.java.constant;
 import java.awt.*;
 
 public enum PropType {
-    COIN("coin.gif");
+    COIN("coin.gif"),
+    RECOVER("recover.gif"),
+    SHIELD("shield.gif");
+
 
     private final Image image;
 
