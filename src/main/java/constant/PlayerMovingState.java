@@ -2,7 +2,7 @@ package main.java.constant;
 
 import java.awt.*;
 
-public enum PlayerState {
+public enum PlayerMovingState {
     LEFT_RUN("playerLeft.gif"),
     RIGHT_RUN("playerRight.gif"),
     STOP("playerFront.png");
@@ -10,7 +10,7 @@ public enum PlayerState {
 
     private final Image image;
 
-    PlayerState(String imageName) {
+    PlayerMovingState(String imageName) {
         image = CommonUtils.getImage(imageName);
     }
 

@@ -17,4 +17,12 @@ public class Attribute {
         return value >= minValue && value <= maxValue;
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public void subtract(int subtractValue){
+        this.value -= subtractValue;
+    }
+
 }

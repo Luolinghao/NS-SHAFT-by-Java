@@ -1,7 +1,7 @@
 package main.java.content.player;
 
 import main.java.base.IDraw;
-import main.java.constant.PlayerState;
+import main.java.constant.PlayerMovingState;
 import main.java.content.Attribute;
 
 import java.awt.*;
@@ -9,11 +9,11 @@ import java.awt.*;
 public class PlayerStatus implements IDraw {
     private Attribute hp;
 
-    private PlayerState status;
+    private PlayerMovingState status;
 
     public PlayerStatus() {
         hp = new Attribute(10,0,10);
-        status = PlayerState.STOP;
+        status = PlayerMovingState.STOP;
     }
 
     public Attribute getHp() {
@@ -25,11 +25,11 @@ public class PlayerStatus implements IDraw {
 
     }
 
-    public PlayerState getState() {
+    public PlayerMovingState getState() {
         return status;
     }
 
-    public void setStatus(PlayerState status) {
+    public void setStatus(PlayerMovingState status) {
         this.status = status;
     }
 }
