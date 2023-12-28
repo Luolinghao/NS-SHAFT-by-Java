@@ -30,7 +30,7 @@ public class SpikePlatform extends BasePlatform {
 
     @Override
     public Rectangle getRectangle() {
-        return new Rectangle(getX(), getY() + 10, getWidth(), getHeight());
+        return new Rectangle(getX(), getY(), getWidth(), getHeight() - 10);
     }
 
     @Override

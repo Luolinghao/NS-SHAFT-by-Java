@@ -25,7 +25,9 @@ public class GamePanel extends JPanel {
      * (游戏界面)背景图片
      */
     private final Image backgroundImage = CommonUtils.getImage("background.png");
-
+    private final Image leftboundImage = CommonUtils.getImage("wall.png");
+    private final Image rightboundImage = CommonUtils.getImage("wall.png");
+    private final Image ceilingImage = CommonUtils.getImage("ceiling.png");
     /**
      * GamePanel构造函数
      * <p>将需要更新显示的对象传入</p>
@@ -42,6 +44,9 @@ public class GamePanel extends JPanel {
         image = this.createImage(this.getWidth(), this.getHeight());
         Graphics g = image.getGraphics();
         g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
+        g.drawImage(ceilingImage, 0, 0, this.getWidth()-264, 20, this);
+        g.drawImage(leftboundImage, 0, 0, 24, this.getHeight(), this);
+        g.drawImage(rightboundImage, this.getWidth()-264, 0, 24, this.getHeight(), this);
         //绘制
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
