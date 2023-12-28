@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class SpikePlatform extends BasePlatform {
 
-    private int hurtPeriod = 10;
+    private int hurtPeriod = 50;
 
     private int timeSinceLastHurt = 0;
 
@@ -40,6 +40,7 @@ public class SpikePlatform extends BasePlatform {
             if(this.isFirstIntersectWithPlayer) {
                 //执行玩家受伤判定
                 ((Player) other).beHurt(hurtValue);
+                this.isFirstIntersectWithPlayer = false;
                 return;
             }
             //距离上次伤害的时间增加(即伤害逻辑判断距离上次的执行次数)

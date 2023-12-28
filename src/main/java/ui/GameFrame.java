@@ -52,9 +52,12 @@ public class GameFrame extends JFrame {
         Service.gravity.add(player);
         //刷新每个实体的动作
         CommonUtils.task(25, () -> {
+            entityServiceUpdateWith(player);
+            //玩家移动
             player.action();
 
-            entityServiceUpdateWith(player);
+
+            System.out.println(player.getPlayerStatus().getHp().getValue());
 
             Service.gravity.update();
             Service.platform.groundJudge(player);
@@ -73,6 +76,7 @@ public class GameFrame extends JFrame {
 
         //更新面板
         CommonUtils.task(5, () -> {
+
             if (player.isGameOver()) {
                 ConfigConstant.TIMER_ALL_STOP = true;
                 Audio.GAME_OVER.play();
