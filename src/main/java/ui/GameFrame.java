@@ -23,7 +23,7 @@ public class GameFrame extends JFrame {
      */
     public GameFrame(){
         //设置窗体标题
-        this.setTitle("100");
+        this.setTitle("地狱一百层");
         //默认关闭
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置窗体不可变
@@ -33,7 +33,7 @@ public class GameFrame extends JFrame {
         Dimension size = new Dimension(FrameConstant.FRAME_WIDTH, FrameConstant.FRAME_HEIGHT);
         int width = toolkit.getScreenSize().width;
         int height = toolkit.getScreenSize().height;
-        this.setBounds((int) (width - size.getWidth()) / 2,
+        this.setBounds((int) (width - size.getWidth()) / 2 ,
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
     }
 

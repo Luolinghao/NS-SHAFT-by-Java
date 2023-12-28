@@ -15,7 +15,7 @@ public class CommonUtils {
      * 获取在[start,end]间的整形随机数
      * <p>不进行区间合理性判定</p>
      * @param start 左边界
-     * @param end 有边界
+     * @param end 右边界
      * @return [start,end]间的整形随机数
      */
     public static int nextInt(int start, int end) {
