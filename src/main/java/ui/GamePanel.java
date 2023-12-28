@@ -45,7 +45,6 @@ public class GamePanel extends JPanel {
         image = this.createImage(this.getWidth(), this.getHeight());
         Graphics g = image.getGraphics();
         g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
-        g.drawImage(ceilingImage, 0, 0, this.getWidth()-264, 20, this);
         g.drawImage(leftboundImage, 0, 0, 24, this.getHeight(), this);
         g.drawImage(rightboundImage, this.getWidth()-264, 0, 24, this.getHeight(), this);
         //绘制
