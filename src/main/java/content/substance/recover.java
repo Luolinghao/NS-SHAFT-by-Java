@@ -6,7 +6,10 @@ import main.java.content.player.Player;
 import java.awt.*;
 
 public class recover extends Prop{
-        public recover(int x, int y) {
+
+    private final int recoverValue = 2;
+
+    public recover(int x, int y) {
             super(x, y);
         }
     @Override
@@ -19,12 +22,8 @@ public class recover extends Prop{
     public void effect(BaseEntity entity) {
         //如果是玩家
         if(entity instanceof Player) {
-            if(((Player) entity).getPlayerStatus().getHp().getValue()>=8&&((Player) entity).getPlayerStatus().getHp().isNormal()){
-                ((Player) entity).getPlayerStatus().getHp().setValue(10);
-            }
-            else if (((Player) entity).getPlayerStatus().getHp().isNormal()&&((Player) entity).getPlayerStatus().getHp().getValue()<8){
-                ((Player) entity).getPlayerStatus().getHp().addtract(2);
-            }
+            Player player = (Player) entity;
+            player.getPlayerStatus().getHp().addLessMax(recoverValue);
         }
     }
     @Override

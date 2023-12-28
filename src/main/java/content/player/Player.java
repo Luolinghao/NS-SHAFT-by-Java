@@ -87,10 +87,12 @@ public class Player extends BaseGravityEntity {
 
     public void beHurt(int hurtValue) {
         //有护盾
-
-
-
-
+        if(this.getPlayerStatus().isHaveShield()) {
+            //移除护盾
+            this.getPlayerStatus().setHaveShield(false);
+            //直接返回，不进行受伤操作
+            return;
+        }
 
         //受伤，生命减少
         this.getPlayerStatus().getHp().subtract(hurtValue);

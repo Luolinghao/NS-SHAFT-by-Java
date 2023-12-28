@@ -20,7 +20,9 @@ public abstract class BaseEntityService<T extends BaseEntity> extends BaseServic
             //移除判断逻辑
             if(isRemovable(entity)) {
                 this.remove(entity);
+                continue;
             }
+
             //与玩家相交处理
             if(entity.isIntersectsWith(player)) {
                 entity.intersectsHandle(player);

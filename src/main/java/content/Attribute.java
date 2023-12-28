@@ -1,5 +1,7 @@
 package main.java.content;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 /**
  * 属性封装类
  */
@@ -30,8 +32,15 @@ public class Attribute {
     public void subtract(int subtractValue){
         this.value -= subtractValue;
     }
-    public void addtract(int addtractValue){
-        this.value += addtractValue;
+
+    public void addLessMax(int addValue) {
+
+        if(addValue + this.value <= maxValue){
+            this.value += addValue;
+        } else {
+            this.value = maxValue;
+        }
+
     }
 
 }
