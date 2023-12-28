@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import main.java.constant.*;
+import main.java.content.platform.Ceiling;
 import main.java.content.player.Player;
 import main.java.generator.PlatformGenerator;
 import main.java.service.Service;
@@ -48,6 +49,7 @@ public class GameFrame extends JFrame {
         Service.init();
         //创建玩家
         Player player = new Player(100,100);
+        Ceiling ceiling = new Ceiling();
         //将玩家加入重力服务集合
         Service.gravity.add(player);
         //刷新每个实体的动作
@@ -55,7 +57,7 @@ public class GameFrame extends JFrame {
             entityServiceUpdateWith(player);
             //玩家移动
             player.action();
-
+            Service.platform.add(ceiling);
 
             System.out.println(player.getPlayerStatus().getHp().getValue());
 
