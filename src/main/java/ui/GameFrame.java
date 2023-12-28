@@ -52,14 +52,15 @@ public class GameFrame extends JFrame {
         Ceiling ceiling = new Ceiling();
         //将玩家加入重力服务集合
         Service.gravity.add(player);
+        Service.platform.add(ceiling);
         //刷新每个实体的动作
         CommonUtils.task(25, () -> {
             entityServiceUpdateWith(player);
             //玩家移动
             player.action();
-            Service.platform.add(ceiling);
 
-            System.out.println(player.getPlayerStatus().getHp().getValue());
+            //System.out.println(player.getPlayerStatus().getHp().getValue());
+            System.out.println(Service.platform.getEntityList().size());
 
             Service.gravity.update();
             Service.platform.groundJudge(player);
