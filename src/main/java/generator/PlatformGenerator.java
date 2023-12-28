@@ -36,6 +36,7 @@ public class PlatformGenerator {
                 PropGenerator.build(platform);
                 break;
         }
+        PlatformConstant.PLATFORM_COUNT++;
         return platform;
     }
 

@@ -14,4 +14,6 @@ public class PlatformConstant {
 
     public static final int REMOVE_BASE_LINE = -20;
 
+    public static int PLATFORM_COUNT = 0;
+
 }

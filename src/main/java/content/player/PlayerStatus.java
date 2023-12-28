@@ -11,7 +11,6 @@ public class PlayerStatus implements IDraw {
     private Attribute hp;
     
     private int score;
-    private int platformCount;
 
 
     private PlayerMovingState movingState;
@@ -66,24 +65,5 @@ public class PlayerStatus implements IDraw {
      * @param deltaScore: 积分增量*/
     public void updateScore(int deltaScore) {
         this.score += deltaScore;
-    }
-
-    public int getPlatformCount() {
-        return this.platformCount;
-    }
-
-    /**
-     * 修改平台计数的方法
-     * @param platformCount: 平台计数的值, 传入后将用该值覆盖角色的平台数
-     * */
-    public void setPlatformCount(int platformCount) {
-        this.platformCount = platformCount;
-    }
-
-    /**
-     * 使得平台计数 +1 的方法
-     * */
-    public void updatePlatformCount() {
-        this.platformCount += 1;
     }
 }

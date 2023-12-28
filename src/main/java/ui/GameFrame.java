@@ -67,6 +67,7 @@ public class GameFrame extends JFrame {
         //生成道具与平台
         CommonUtils.task(1000, () -> {
             Service.platform.add(PlatformGenerator.build());
+            player.getPlayerStatus().updateScore(1);
         });
         //音乐
         CommonUtils.task(30 * 1000, Audio.BGM::play);
