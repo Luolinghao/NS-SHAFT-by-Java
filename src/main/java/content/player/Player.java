@@ -56,7 +56,7 @@ public class Player extends BaseGravityEntity {
         }
 
         if(Keys.RIGHT.use()) {
-            if(this.getX() + this.getWidth() + EntityConstant.WALL_LENGTH < FrameConstant.FRAME_WIDTH - 24*10) {
+            if(this.getX() + this.getWidth() + EntityConstant.WALL_LENGTH < FrameConstant.FRAME_WIDTH - 24*11) {
                 this.setX(this.getX() + this.getXSpeed());
             }
             this.getPlayerStatus().setMovingState(PlayerMovingState.RIGHT_RUN);
