@@ -8,14 +8,17 @@ public class Coin extends Prop{
         super(x, y);
     }
     public <T extends BaseEntity> void intersectsHandle(T other) {
-        if(other instanceof Player) {
-            this.effect(other);
-            this.setRemovable(true);
-        }
+        this.effect(other);
+        this.setRemovable(true);
     }
 
 
     public void effect(BaseEntity entity) {
 
+        if (entity instanceof Player) {
+            ((Player) entity).getPlayerStatus().setScore(((Player) entity).getPlayerStatus().getScore()+2);
+        }
     }
 }
+
+
