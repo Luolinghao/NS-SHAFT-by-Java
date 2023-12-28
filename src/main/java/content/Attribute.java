@@ -23,8 +23,15 @@ public class Attribute {
         return value;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     public void subtract(int subtractValue){
         this.value -= subtractValue;
+    }
+    public void addtract(int addtractValue){
+        this.value += addtractValue;
     }
 
 }
