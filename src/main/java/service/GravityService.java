@@ -1,16 +1,15 @@
 package main.java.service;
 
-import main.java.base.BaseEntity;
 import main.java.base.BaseService;
 import main.java.base.IGravity;
 
 /**
  * 重力服务
- * <p>实现游戏的重力功能</p>
+ * <p>实现游戏的重力功能,负责维护所有受重力影响的实体</p>
  */
 public class GravityService extends BaseService<IGravity> {
     /**
-     * 重力加速度
+     * 重力加速度(比例系数)
      */
     private static final int g = 10;
 
@@ -36,8 +35,8 @@ public class GravityService extends BaseService<IGravity> {
     }
 
     /**
-     * 维护列表
-     * 重力服务不执行action
+     * 更新并维护列表
+     * <p>重力服务不执行action</p>
      */
     public void update() {
        for(IGravity entity : this.getEntityList()) {

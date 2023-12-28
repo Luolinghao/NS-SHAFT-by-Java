@@ -9,14 +9,16 @@ public class shield extends Prop{
     }
     @Override
     public <T extends BaseEntity> void intersectsHandle(T other) {
-        if(other instanceof Player) {
-            this.effect(other);
-            this.setRemovable(true);
+        this.effect(other);
+        this.setRemovable(true);
+    }
+
+    @Override
+    public void effect(BaseEntity entity) {
+        //如果是玩家
+        if(entity instanceof Player) {
+            ((Player) entity).getPlayerStatus().setHaveShield(true);
         }
     }
 
-
-    public void effect(Player p) {
-        p.getPlayerStatus().setHaveShield(true);
-    }
 }

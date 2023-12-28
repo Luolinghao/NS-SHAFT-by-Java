@@ -1,8 +1,6 @@
 package main.java.content.platform;
 
 import main.java.base.BaseEntity;
-import main.java.constant.CommonUtils;
-import main.java.constant.PlatformConstant;
 import main.java.constant.PlatformType;
 import main.java.content.player.Player;
 

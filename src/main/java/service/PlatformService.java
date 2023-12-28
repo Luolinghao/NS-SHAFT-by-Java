@@ -6,7 +6,10 @@ import main.java.content.platform.BasePlatform;
 
 import java.awt.*;
 
-
+/**
+ * 平台服务类
+ * <p>负责维护游戏中的所有平台实体</p>
+ */
 public class PlatformService extends BaseEntityService<BasePlatform> {
 
     /**

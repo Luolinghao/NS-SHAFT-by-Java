@@ -12,8 +12,15 @@ import main.java.content.player.Player;
 import main.java.generator.PlatformGenerator;
 import main.java.service.Service;
 
+/**
+ * 游戏界面类
+ */
 public class GameFrame extends JFrame {
 
+    /**
+     * 游戏界面的构造函数
+     * <p>进行初始化界面配置</p>
+     */
     public GameFrame(){
         //设置窗体标题
         this.setTitle("100");
@@ -30,6 +37,9 @@ public class GameFrame extends JFrame {
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
     }
 
+    /**
+     * 游戏程序运行的主体逻辑
+     */
     public void launch(){
         //主界面
 
@@ -108,11 +118,19 @@ public class GameFrame extends JFrame {
         });
     }
 
+    /**
+     * 面向实体对象的服务更新
+     * @param player 玩家
+     */
     public void entityServiceUpdateWith(Player player) {
         Service.platform.update(player);
         Service.substance.update(player);
     }
 
+    /**
+     * 程序入口
+     * @param args 初始参数
+     */
     public static void main(String[] args)  {
         GameFrame gameFrame = new GameFrame();
         gameFrame.launch();

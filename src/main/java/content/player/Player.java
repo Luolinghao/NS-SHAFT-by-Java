@@ -37,12 +37,12 @@ public class Player extends BaseGravityEntity {
     public void xMove() {
         //左右键同时按下,不执行x轴移动
         if (Keys.LEFT.use() && Keys.RIGHT.use()) {
-            this.getPlayerStatus().setStatus(PlayerMovingState.STOP);
+            this.getPlayerStatus().setMovingState(PlayerMovingState.STOP);
             return;
         }
         //当没有按移动键时
         if (!(Keys.LEFT.use() || Keys.RIGHT.use())) {
-            this.getPlayerStatus().setStatus(PlayerMovingState.STOP);
+            this.getPlayerStatus().setMovingState(PlayerMovingState.STOP);
             return;
         }
 
@@ -51,14 +51,14 @@ public class Player extends BaseGravityEntity {
             if(this.getX() > EntityConstant.WALL_LENGTH) {
                 this.setX(this.getX() - this.getXSpeed());
             }
-            this.getPlayerStatus().setStatus(PlayerMovingState.LEFT_RUN);
+            this.getPlayerStatus().setMovingState(PlayerMovingState.LEFT_RUN);
             this.setDirection(Direction.LEFT);
         }
         if(Keys.RIGHT.use()) {
             if(this.getX() + this.getWidth() + EntityConstant.WALL_LENGTH < FrameConstant.FRAME_WIDTH) {
                 this.setX(this.getX() + this.getXSpeed());
             }
-            this.getPlayerStatus().setStatus(PlayerMovingState.RIGHT_RUN);
+            this.getPlayerStatus().setMovingState(PlayerMovingState.RIGHT_RUN);
             this.setDirection(Direction.RIGHT);
         }
 
@@ -77,7 +77,7 @@ public class Player extends BaseGravityEntity {
 
     @Override
     public Image getImage() {
-        return this.playerStatus.getState().getImage();
+        return this.playerStatus.getMovingState().getImage();
     }
 
 

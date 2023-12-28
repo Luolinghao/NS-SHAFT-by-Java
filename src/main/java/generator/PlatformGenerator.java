@@ -33,7 +33,7 @@ public class PlatformGenerator {
                 break;
             case NORMAL:
                 platform = new NormalPlatform(x,FrameConstant.FRAME_HEIGHT);
-
+                PropGenerator.build(platform);
                 break;
         }
         return platform;

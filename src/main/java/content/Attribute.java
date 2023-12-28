@@ -1,8 +1,10 @@
 package main.java.content;
 
+/**
+ * 属性封装类
+ */
 public class Attribute {
     private int value;
-
     private int minValue;
 
     private int maxValue;
