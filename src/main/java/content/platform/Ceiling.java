@@ -11,7 +11,7 @@ public class Ceiling extends BasePlatform {
     public Ceiling() {
         super(24, 0);
         this.setHeight(24);
-        this.setWidth(24*25);
+        this.setWidth(540);
         this.setFrontImage(CommonUtils.getImage("ceiling.png"));
     }
 
