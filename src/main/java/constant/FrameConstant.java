@@ -13,7 +13,7 @@ public class FrameConstant {
     /**
      * 窗体宽度
      */
-    public static final int FRAME_WIDTH = 24*25;
+    public static final int FRAME_WIDTH = 24*35;
 
     /**
      * 窗体高度

@@ -2,6 +2,7 @@ package main.java.ui;
 
 import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
+import main.java.content.player.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,6 +51,26 @@ public class GamePanel extends JPanel {
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
         }
+        for (IDraw draw : this.draws) {
+            if(draw instanceof Player){
+                wordWrite((Player) draw);
+            }
+        }
+    }
+
+    private void wordWrite(Player player){
+        Graphics pen1 = image.getGraphics();
+        Graphics pen2 = image.getGraphics();
+        pen1.setColor(Color.RED);
+        pen1.setFont(new Font("仿宋",Font.BOLD,40));
+        pen2.setColor(Color.green);
+        pen2.setFont(new Font("仿宋",Font.BOLD,40));
+        pen1.drawString("血量",24*26,24*10);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*15);
+        pen1.drawString("层数",24*26,24*20);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*25);
+        pen1.drawString("得分",24*26,24*30);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*35);
     }
 
     /**
