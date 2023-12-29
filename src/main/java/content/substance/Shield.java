@@ -5,8 +5,8 @@ import main.java.content.player.Player;
 
 import java.awt.*;
 
-public class shield extends Prop{
-    public shield(int x, int y) {
+public class Shield extends Prop{
+    public Shield(int x, int y) {
         super(x, y);
     }
     @Override

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import main.java.constant.*;
 import main.java.content.platform.Ceiling;
+import main.java.content.platform.NormalPlatform;
 import main.java.content.player.Player;
 import main.java.generator.PlatformGenerator;
 import main.java.service.Service;
@@ -17,6 +18,7 @@ import main.java.service.Service;
  * 游戏界面类
  */
 public class GameFrame extends JFrame {
+    private StartPanel sp;
 
     /**
      * 游戏界面的构造函数
@@ -39,6 +41,15 @@ public class GameFrame extends JFrame {
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
     }
 
+
+    //绘制初始界面画板
+    public void startPanel(){
+        sp=new StartPanel();
+        this.add(sp);
+        this.setVisible(true);
+
+    }
+
     /**
      * 游戏程序运行的主体逻辑
      */
@@ -50,25 +61,32 @@ public class GameFrame extends JFrame {
         Service.init();
         //创建玩家
         Player player = new Player(100,100);
+        //创建天花板
         Ceiling ceiling = new Ceiling();
+        //创建初始平台
+        NormalPlatform platform = new NormalPlatform(100,100 + 300);
         //将玩家加入重力服务集合
         Service.gravity.add(player);
+        Service.platform.add(ceiling);
+        Service.platform.add(platform);
         //刷新每个实体的动作
         CommonUtils.task(25, () -> {
             entityServiceUpdateWith(player);
             //玩家移动
             player.action();
-            Service.platform.add(ceiling);
 
-            System.out.println(player.getPlayerStatus().getHp().getValue());
+            //System.out.println(player.getPlayerStatus().getHp().getValue());
+            System.out.println(Service.platform.getEntityList().size());
 
             Service.gravity.update();
             Service.platform.groundJudge(player);
         });
+
         //生成道具与平台
         CommonUtils.task(1000, () -> {
             Service.platform.add(PlatformGenerator.build());
         });
+
         //音乐
         CommonUtils.task(30 * 1000, Audio.BGM::play);
         //创建画板
@@ -141,6 +159,12 @@ public class GameFrame extends JFrame {
      */
     public static void main(String[] args)  {
         GameFrame gameFrame = new GameFrame();
+        while(!ConfigConstant.START) {
+            gameFrame.startPanel();
+        }
+        gameFrame.remove(gameFrame.sp);
+        gameFrame.sp.setVisible(false);
         gameFrame.launch();
+
     }
 }

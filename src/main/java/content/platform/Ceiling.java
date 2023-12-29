@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Ceiling extends BasePlatform {
 
-    private int hurtPeriod = 5000;
+    private int hurtPeriod = 25;
 
     private int timeSinceLastHurt = 0;
 
