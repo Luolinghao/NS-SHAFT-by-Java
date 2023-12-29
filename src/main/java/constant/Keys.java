@@ -6,7 +6,9 @@ import java.util.Set;
 
 public enum Keys {
     LEFT(KeyEvent.VK_A),
-    RIGHT(KeyEvent.VK_D);
+    RIGHT(KeyEvent.VK_D),
+    LEFT_2(KeyEvent.VK_LEFT),
+    RIGHT_(KeyEvent.VK_RIGHT);
 
     private final static Set<Integer> keySet = new HashSet<>();//按键
 
