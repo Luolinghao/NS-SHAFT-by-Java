@@ -14,6 +14,8 @@ import main.java.service.Service;
 
 public class GameFrame extends JFrame {
 
+    private StartPanel sp;
+
     public GameFrame(){
         //设置窗体标题
         this.setTitle("100");
@@ -28,6 +30,14 @@ public class GameFrame extends JFrame {
         int height = toolkit.getScreenSize().height;
         this.setBounds((int) (width - size.getWidth()) / 2,
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
+    }
+
+    //绘制初始界面画板
+    public void startPanel(){
+        sp=new StartPanel();
+        this.add(sp);
+        this.setVisible(true);
+
     }
 
     public void launch(){
@@ -115,6 +125,12 @@ public class GameFrame extends JFrame {
 
     public static void main(String[] args)  {
         GameFrame gameFrame = new GameFrame();
-        gameFrame.launch();
+        while(ConfigConstant.START == false) {
+            gameFrame.startPanel();
+        }
+        System.out.println("123");
+        gameFrame.remove(gameFrame.sp);
+        gameFrame.sp.setVisible(false);
+        //gameFrame.launch();
     }
 }
