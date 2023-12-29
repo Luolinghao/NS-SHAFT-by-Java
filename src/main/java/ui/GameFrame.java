@@ -84,9 +84,6 @@ public class GameFrame extends JFrame {
             //玩家移动
             player.action();
 
-            //System.out.println(player.getPlayerStatus().getHp().getValue());
-            //System.out.println(Service.platform.getEntityList().size());
-
             Service.gravity.update();
             Service.platform.groundJudge(player);
         });
@@ -94,6 +91,7 @@ public class GameFrame extends JFrame {
         //生成道具与平台
         CommonUtils.task(1000, () -> {
             Service.platform.add(PlatformGenerator.build());
+            player.getPlayerStatus().updateScore(1);
         });
 
         //音乐

@@ -3,6 +3,7 @@ package main.java.ui;
 import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
 import main.java.constant.ConfigConstant;
+import main.java.constant.PlatformConstant;
 import main.java.content.player.Player;
 
 import javax.swing.*;
@@ -62,25 +63,20 @@ public class GamePanel extends JPanel {
         if(!ConfigConstant.GAME_MODE_TWO_PLAYER) {
             for (IDraw draw : this.draws) {
                 if (draw instanceof Player) {
-                    singleWordWrite((Player) draw);
-                }//如果draw是player类型则传入该draw后续打印
+                    player1WordWrite((Player) draw);
+                }//如果draw是player类型则传入该draw打印第一位玩家
+                //if (draw instanceof Player2) {
+                   // player2WordWrite((Player2) draw);
+                //}
             }
         }//单人模式
-        else {
-            for (IDraw draw : this.draws) {
-                if (draw instanceof Player) {
-                    doubleWordWrite((Player) draw ,(Player) draw);
-                }
-            }
-        }
-        //双人模式
     }
 
     /**
      * 单人模式文字部分打印
      * @param player 一名玩家的需要展示的分数,血量,层数等
      */
-    private void singleWordWrite(Player player){
+    private void player1WordWrite(Player player){
         Graphics pen1 = image.getGraphics();
         Graphics pen2 = image.getGraphics();
         pen1.setColor(Color.RED);
@@ -91,15 +87,27 @@ public class GamePanel extends JPanel {
         pen1.drawString("血量",24*26,24*7);
         pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*9);
         pen1.drawString("层数",24*26,24*12);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*14);
+        pen2.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*26,24*14);
         pen1.drawString("得分",24*26,24*17);
         pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*19);
     }
 
-    private void doubleWordWrite(Player player1,Player player2){
-
+    /*private void player2WordWrite(Player2 player){
+        Graphics pen1 = image.getGraphics();
+        Graphics pen2 = image.getGraphics();
+        pen1.setColor(Color.RED);
+        pen1.setFont(new Font("仿宋",Font.BOLD,40));
+        pen2.setColor(Color.green);
+        pen2.setFont(new Font("仿宋",Font.BOLD,40));
+        pen1.drawString("Player2",612,24*25);
+        pen1.drawString("血量",24*26,24*29);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*31);
+        pen1.drawString("层数",24*26,24*34);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*36);
+        pen1.drawString("得分",24*26,24*39);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*41);
     }
-
+*/
     /**
      * paint方法
      * <p>游戏界面内容绘制</p>
