@@ -2,6 +2,7 @@ package main.java.ui;
 
 import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
+import main.java.constant.ConfigConstant;
 import main.java.content.player.Player;
 
 import javax.swing.*;
@@ -28,7 +29,10 @@ public class GamePanel extends JPanel {
     private final Image backgroundImage = CommonUtils.getImage("background.png");
     private final Image leftboundImage = CommonUtils.getImage("wall.png");
     private final Image rightboundImage = CommonUtils.getImage("wall.png");
+    private final Image verticalBoundImage = CommonUtils.getImage("wall.png");
+    private final Image horizonBoundImage = CommonUtils.getImage("horizon.png");
     private final Image ceilingImage = CommonUtils.getImage("ceiling.png");
+
     /**
      * GamePanel构造函数
      * <p>将需要更新显示的对象传入</p>
@@ -47,30 +51,53 @@ public class GamePanel extends JPanel {
         g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
         g.drawImage(leftboundImage, 0, 0, 24, this.getHeight(), this);
         g.drawImage(rightboundImage, this.getWidth()-264, 0, 24, this.getHeight(), this);
+        g.drawImage(verticalBoundImage,this.getWidth()-24,0,24,this.getHeight(),this);
+        g.drawImage(horizonBoundImage,24 * 24,0,24 * 9,22,this);
+        g.drawImage(horizonBoundImage,24 * 24,24 * 22,24 * 9,22,this);
+        g.drawImage(horizonBoundImage,24 * 24,this.getHeight() - 22,24 * 9,22,this);
         //绘制
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
         }
-        for (IDraw draw : this.draws) {
-            if(draw instanceof Player){
-                wordWrite((Player) draw);
+        if(!ConfigConstant.GAME_MODE_TWO_PLAYER) {
+            for (IDraw draw : this.draws) {
+                if (draw instanceof Player) {
+                    singleWordWrite((Player) draw);
+                }//如果draw是player类型则传入该draw后续打印
+            }
+        }//单人模式
+        else {
+            for (IDraw draw : this.draws) {
+                if (draw instanceof Player) {
+                    doubleWordWrite((Player) draw ,(Player) draw);
+                }
             }
         }
+        //双人模式
     }
 
-    private void wordWrite(Player player){
+    /**
+     * 单人模式文字部分打印
+     * @param player 一名玩家的需要展示的分数,血量,层数等
+     */
+    private void singleWordWrite(Player player){
         Graphics pen1 = image.getGraphics();
         Graphics pen2 = image.getGraphics();
         pen1.setColor(Color.RED);
         pen1.setFont(new Font("仿宋",Font.BOLD,40));
         pen2.setColor(Color.green);
         pen2.setFont(new Font("仿宋",Font.BOLD,40));
-        pen1.drawString("血量",24*26,24*10);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*15);
-        pen1.drawString("层数",24*26,24*20);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*25);
-        pen1.drawString("得分",24*26,24*30);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*35);
+        pen1.drawString("Player1",612,24*3);
+        pen1.drawString("血量",24*26,24*7);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*9);
+        pen1.drawString("层数",24*26,24*12);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*14);
+        pen1.drawString("得分",24*26,24*17);
+        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*19);
+    }
+
+    private void doubleWordWrite(Player player1,Player player2){
+
     }
 
     /**

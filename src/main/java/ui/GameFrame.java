@@ -28,7 +28,8 @@ public class GameFrame extends JFrame {
         //默认关闭
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置窗体不可变
-        //this.setResizable(false);//固定窗体
+        this.setResizable(false);
+        //固定窗体
         //设置窗体居中
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension size = new Dimension(FrameConstant.FRAME_WIDTH, FrameConstant.FRAME_HEIGHT);
