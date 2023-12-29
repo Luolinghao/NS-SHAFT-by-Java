@@ -1,6 +1,7 @@
 package main.java.base;
 
 import main.java.content.player.Player;
+import main.java.content.player.Player2;
 
 import java.awt.*;
 
@@ -15,20 +16,24 @@ public abstract class BaseEntityService<T extends BaseEntity> extends BaseServic
     /**
      * 更新服务列表并执行每个实体对象的action
      */
-    public void update(Player player) {
+    public void update(Player... players) {
+
+        for(Player player : players) {
+            for(T entity : this.getEntityList()) {
+                //移除判断逻辑
+                if(isRemovable(entity)) {
+                    this.remove(entity);
+                    continue;
+                }
+
+                //与玩家相交处理
+                if(entity.isIntersectsWith(player)) {
+                    entity.intersectsHandle(player);
+                }
+            }
+        }
+
         for(T entity : this.getEntityList()) {
-            //移除判断逻辑
-            if(isRemovable(entity)) {
-                this.remove(entity);
-                continue;
-            }
-
-            //与玩家相交处理
-            if(entity.isIntersectsWith(player)) {
-                entity.intersectsHandle(player);
-            }
-
-            //动作
             entity.action();
         }
     }

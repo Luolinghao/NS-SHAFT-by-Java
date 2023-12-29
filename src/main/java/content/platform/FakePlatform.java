@@ -24,18 +24,19 @@ public class FakePlatform extends BasePlatform {
     public <T extends BaseEntity> boolean isAboveIntersectsWith(T otherEntity) {
         if(otherEntity instanceof Player) {
             this.isIntersectsWithPlayer = super.isAboveIntersectsWith(otherEntity);
+            if(isIntersectsWithPlayer){
+                removeTime++;
+            }
+        }
+        if(removeTime == 8){
+            this.setRemovable(true);
         }
         return super.isAboveIntersectsWith(otherEntity);
     }
 
     @Override
     public void action() {
-        if(isIntersectsWithPlayer){
-            removeTime++;
-        }
-        if(removeTime == 8){
-            this.setRemovable(true);
-        }
+
         super.action();
     }
 

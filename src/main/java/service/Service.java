@@ -21,6 +21,11 @@ public abstract class Service {
     public static final SubstanceService substance = SubstanceService.getSingletonInstance();
 
     /**
+     * 玩家服务的单例对象
+     */
+    public static final PlayerService players = PlayerService.getSingletonInstance();
+
+    /**
      * 初始化函数，进行类的加载，构造服务对象的单例
      */
     public static void init(){}

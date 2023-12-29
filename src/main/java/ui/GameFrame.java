@@ -6,11 +6,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
+import main.java.base.IDraw;
 import main.java.constant.*;
 import main.java.content.platform.Ceiling;
 import main.java.content.platform.NormalPlatform;
 import main.java.content.player.Player;
+import main.java.content.player.Player2;
 import main.java.generator.PlatformGenerator;
 import main.java.service.Service;
 
@@ -69,35 +72,53 @@ public class GameFrame extends JFrame {
         //初始化游戏服务,对每种服务进行初始化
         Service.init();
         //创建玩家
-        Player player = new Player(100,100);
+        Player player1 = new Player(100,100);
+        Player2 player2 = new Player2(150,100);
+
         //创建天花板
         Ceiling ceiling = new Ceiling();
         //创建初始平台
         NormalPlatform platform = new NormalPlatform(100,100 + 300);
-        //将玩家加入重力服务集合
-        Service.gravity.add(player);
+        //将玩家加入重力服务集合和玩家服务集合
+        Service.gravity.add(player1);
+        Service.players.add(player1);
+        if(ConfigConstant.GAME_MODE_TWO_PLAYER) {
+            Service.gravity.add(player2);
+            Service.players.add(player2);
+
+        }
         Service.platform.add(ceiling);
         Service.platform.add(platform);
         //刷新每个实体的动作
         CommonUtils.task(25, () -> {
-            entityServiceUpdateWith(player);
-            //玩家移动
-            player.action();
 
+            //玩家移动
+
+            entityServiceUpdateWith(player1,player2);
+            player1.action();
+            player2.action();
+
+            Service.players.update();
             Service.gravity.update();
-            Service.platform.groundJudge(player);
+            for(Player p : Service.players.getEntityList()){
+                Service.platform.groundJudge(p);
+            }
+
         });
 
         //生成道具与平台
         CommonUtils.task(1000, () -> {
             Service.platform.add(PlatformGenerator.build());
-            player.getPlayerStatus().updateScore(1);
+            for(Player p : Service.players.getEntityList()){
+                p.getPlayerStatus().updateScore(1);
+            }
+
         });
 
         //音乐
         CommonUtils.task(30 * 1000, Audio.BGM::play);
         //创建画板
-        GamePanel gamePanel = new GamePanel(player,Service.platform,Service.substance);
+        GamePanel gamePanel = new GamePanel(Service.players,Service.platform,Service.substance);
         //显示窗体
         this.add(gamePanel);
         this.setVisible(true);
@@ -105,7 +126,7 @@ public class GameFrame extends JFrame {
         //更新面板
         CommonUtils.task(5, () -> {
 
-            if (player.isGameOver()) {
+            if (Service.players.allGameOver()) {
                 ConfigConstant.TIMER_ALL_STOP = true;
                 Audio.GAME_OVER.play();
                 try {
@@ -153,11 +174,11 @@ public class GameFrame extends JFrame {
 
     /**
      * 面向实体对象的服务更新
-     * @param player 玩家
+     * @param players 玩家集合
      */
-    public void entityServiceUpdateWith(Player player) {
-        Service.platform.update(player);
-        Service.substance.update(player);
+    public void entityServiceUpdateWith(Player... players) {
+        Service.platform.update(players);
+        Service.substance.update(players);
 
     }
 
