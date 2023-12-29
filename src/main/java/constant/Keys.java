@@ -8,7 +8,7 @@ public enum Keys {
     LEFT(KeyEvent.VK_A),
     RIGHT(KeyEvent.VK_D),
     LEFT_2(KeyEvent.VK_LEFT),
-    RIGHT_(KeyEvent.VK_RIGHT);
+    RIGHT_2(KeyEvent.VK_RIGHT);
 
     private final static Set<Integer> keySet = new HashSet<>();//按键
 
@@ -16,7 +16,7 @@ public enum Keys {
         this.keyValue = keyValue;
     }
 
-    private int keyValue;//键值
+    private final int keyValue;//键值
 
     /**
      * 是否使用了某键
