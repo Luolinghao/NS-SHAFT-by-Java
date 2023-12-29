@@ -6,6 +6,8 @@ import main.java.constant.ConfigConstant;
 import main.java.constant.PlatformConstant;
 import main.java.content.player.Player;
 import main.java.content.player.Player2;
+import main.java.service.PlayerService;
+import main.java.service.Service;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,12 +64,17 @@ public class GamePanel extends JPanel {
             draw.drawImage(g);
         }
         for (IDraw draw : this.draws) {
-            if (draw instanceof Player) {
-                player1WordWrite((Player) draw);
-            }//如果draw是player类型则传入该draw打印第一位玩家
-            if (draw instanceof Player2) {
-                player2WordWrite((Player2) draw);
+            if (draw instanceof PlayerService) {
+                for(Player p : ((PlayerService) draw).getEntityList()){
+                    if(p instanceof Player)//如果draw是player类型则传入该draw打印第一位玩家
+                        player1WordWrite(p);
+                    if (p instanceof Player2) {
+                        player2WordWrite((Player2) p);
+                    }
+                }
+
             }
+
         }
     }
 
@@ -102,7 +109,7 @@ public class GamePanel extends JPanel {
         pen1.drawString("血量",24*26,24*29);
         pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*31);
         pen1.drawString("层数",24*26,24*34);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getPlatformCount()),24*26,24*36);
+        pen2.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*26,24*36);
         pen1.drawString("得分",24*26,24*39);
         pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*41);
     }
