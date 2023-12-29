@@ -1,7 +1,7 @@
 package main.java.base;
 
 import main.java.content.player.Player;
-import main.java.content.player.Player2;
+
 
 import java.awt.*;
 
