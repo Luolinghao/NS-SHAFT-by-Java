@@ -12,6 +12,7 @@ public class Mouse extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e){
         ConfigConstant.START = true;
-
+        System.out.println("isClicked");
+        System.out.println(ConfigConstant.START);
     }
 }

@@ -2,10 +2,13 @@ package main.java.ui;
 
 
 
+import main.java.constant.Keys;
 import main.java.constant.Mouse;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -21,7 +24,7 @@ public class StartPanel extends JPanel {
 
     private JButton j1;
 
-    public StartPanel(){
+    public StartPanel(GameFrame gameFrame){
         this.setBackground(Color.white);
         startImage=new BufferedImage(24*25,24*45,BufferedImage.TYPE_INT_RGB);
         startBuffer=startImage.getGraphics();
@@ -35,8 +38,23 @@ public class StartPanel extends JPanel {
         //绘制按钮
         j1=new JButton("开始游戏");
         j1.setBounds(150,300,100,50);
-        j1.addMouseListener(new Mouse());
+        j1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                gameFrame.getStartPanel().setVisible(false);
+                gameFrame.remove(gameFrame.getStartPanel());
+                gameFrame.launch();
+                gameFrame.requestFocus();
+            }
+        });
+
+
         this.add(j1);
+
+        gameFrame.add(this);
+
+        gameFrame.setVisible(true);
+
 
     }
 

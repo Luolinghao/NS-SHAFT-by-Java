@@ -39,15 +39,24 @@ public class GameFrame extends JFrame {
         int height = toolkit.getScreenSize().height;
         this.setBounds((int) (width - size.getWidth()) / 2 ,
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
+
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Keys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                Keys.remove(e.getKeyCode());
+            }
+        });
     }
 
 
     //绘制初始界面画板
-    public void startPanel(){
-        sp=new StartPanel();
-        this.add(sp);
-        this.setVisible(true);
-
+    public void startPanel() {
+        sp = new StartPanel(this);
     }
 
     /**
@@ -76,7 +85,7 @@ public class GameFrame extends JFrame {
             player.action();
 
             //System.out.println(player.getPlayerStatus().getHp().getValue());
-            System.out.println(Service.platform.getEntityList().size());
+            //System.out.println(Service.platform.getEntityList().size());
 
             Service.gravity.update();
             Service.platform.groundJudge(player);
@@ -117,6 +126,7 @@ public class GameFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 Keys.add(e.getKeyCode());
+                System.out.println("a USED");
             }
 
             @Override
@@ -153,18 +163,16 @@ public class GameFrame extends JFrame {
 
     }
 
+    public StartPanel getStartPanel(){
+        return sp;
+    }
+
     /**
      * 程序入口
      * @param args 初始参数
      */
     public static void main(String[] args)  {
         GameFrame gameFrame = new GameFrame();
-        while(!ConfigConstant.START) {
-            gameFrame.startPanel();
-        }
-        gameFrame.remove(gameFrame.sp);
-        gameFrame.sp.setVisible(false);
-        gameFrame.launch();
-
+        gameFrame.startPanel();
     }
 }

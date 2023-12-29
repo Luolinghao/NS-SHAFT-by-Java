@@ -22,6 +22,8 @@ public class ConfigConstant {
     public static boolean GAME_START;
     public static boolean GAME_MODE_TWO_PLAYER = false;
 
+    public static boolean START_PANEL_IS_FIRST_START = true;
+
     public static final String IMAGE_RESOURCES_PATH = "src/main/resources/image/";
 
     public static boolean START = false;
