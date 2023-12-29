@@ -5,6 +5,7 @@ import main.java.constant.CommonUtils;
 import main.java.constant.ConfigConstant;
 import main.java.constant.PlatformConstant;
 import main.java.content.player.Player;
+import main.java.content.player.Player2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,16 +61,14 @@ public class GamePanel extends JPanel {
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
         }
-        if(!ConfigConstant.GAME_MODE_TWO_PLAYER) {
-            for (IDraw draw : this.draws) {
-                if (draw instanceof Player) {
-                    player1WordWrite((Player) draw);
-                }//如果draw是player类型则传入该draw打印第一位玩家
-                //if (draw instanceof Player2) {
-                   // player2WordWrite((Player2) draw);
-                //}
+        for (IDraw draw : this.draws) {
+            if (draw instanceof Player) {
+                player1WordWrite((Player) draw);
+            }//如果draw是player类型则传入该draw打印第一位玩家
+            if (draw instanceof Player2) {
+                player2WordWrite((Player2) draw);
             }
-        }//单人模式
+        }
     }
 
     /**
@@ -92,7 +91,7 @@ public class GamePanel extends JPanel {
         pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*19);
     }
 
-    /*private void player2WordWrite(Player2 player){
+    private void player2WordWrite(Player2 player){
         Graphics pen1 = image.getGraphics();
         Graphics pen2 = image.getGraphics();
         pen1.setColor(Color.RED);
@@ -107,7 +106,7 @@ public class GamePanel extends JPanel {
         pen1.drawString("得分",24*26,24*39);
         pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*41);
     }
-*/
+
     /**
      * paint方法
      * <p>游戏界面内容绘制</p>

@@ -2,8 +2,13 @@ package main.java.ui;
 
 
 
+import main.java.constant.ConfigConstant;
+import main.java.constant.Keys;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -15,25 +20,37 @@ public class StartPanel extends JPanel {
     private BufferedImage startImage;
     private Graphics startBuffer;
 
-    //private ImageIcon started=new ImageIcon();;
+    private Image image;
 
-    private JButton j1;
+    private ImageIcon imageIcon;
+
+    private JButton singleMode;
+    private JButton doubleMode;
 
     public StartPanel(GameFrame gameFrame){
-        this.setBackground(Color.white);
         startImage=new BufferedImage(24*25,24*45,BufferedImage.TYPE_INT_RGB);
         startBuffer=startImage.getGraphics();
         this.setLayout(null);
 
         //绘制文字
-        startBuffer.setColor(Color.white);
-        startBuffer.setFont(new Font("宋体",Font.BOLD,36));
-        startBuffer.drawString("地狱一百层",100,100);
+        startBuffer.setColor(Color.RED);
+        startBuffer.setFont(new Font("仿宋",Font.BOLD,100));
+        startBuffer.drawString("地狱一百层",24*10,24*5);
 
-        //绘制按钮
-        j1 = new JButton("开始游戏");
-        j1.setBounds(150,300,100,50);
-        j1.addMouseListener(new MouseAdapter() {
+        //单人模式绘制按钮
+        singleMode = new JButton("单人模式");
+        singleMode.setFont(new Font("仿宋",Font.BOLD,40));
+        singleMode.setBounds(24*10,500,24*15,24*2);
+        singleMode.setBackground(Color.blue);
+        
+        //双人模式绘制按钮
+        doubleMode = new JButton("双人模式");
+        doubleMode.setFont(new Font("仿宋",Font.BOLD,40));
+        doubleMode.setBounds(24*10,600,24*15,24*2);
+        doubleMode.setBackground(Color.blue);
+
+        //单人模式
+        singleMode.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 gameFrame.getStartPanel().setVisible(false);
@@ -43,8 +60,21 @@ public class StartPanel extends JPanel {
             }
         });
 
+        //双人模式
+        doubleMode.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ConfigConstant.GAME_MODE_TWO_PLAYER = true;
+                gameFrame.getStartPanel().setVisible(false);
+                gameFrame.remove(gameFrame.getStartPanel());
+                gameFrame.launch();
+                gameFrame.requestFocus();
+            }
+        });
 
-        this.add(j1);
+
+        this.add(singleMode);
+        this.add(doubleMode);
 
         gameFrame.add(this);
 
@@ -53,8 +83,8 @@ public class StartPanel extends JPanel {
 
     }
 
-    public JButton getJ1(){
-        return j1;
+    public JButton getsingleMode(){
+        return singleMode;
     }
 
 
