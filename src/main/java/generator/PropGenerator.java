@@ -2,10 +2,9 @@ package main.java.generator;
 
 import main.java.constant.*;
 import main.java.content.platform.BasePlatform;
-import main.java.content.substance.Coin;
-import main.java.content.substance.Prop;
-import main.java.content.substance.recover;
-import main.java.content.substance.shield;
+import main.java.content.substance.*;
+import main.java.content.substance.LifePotion;
+import main.java.content.substance.Shield;
 import main.java.service.Service;
 
 import java.util.Random;
@@ -39,13 +38,13 @@ public class PropGenerator {
                     prop.moveWithPlatform(platform);
                     platform.setProp(prop);
                     break;
-                case RECOVER:
-                    prop = new recover(buildX,buildY);
+                case LIFEPOTION:
+                    prop = new LifePotion(buildX,buildY);
                     prop.moveWithPlatform(platform);
                     platform.setProp(prop);
                     break;
                 case SHIELD:
-                    prop = new shield(buildX,buildY);
+                    prop = new Shield(buildX,buildY);
                     prop.moveWithPlatform(platform);
                     platform.setProp(prop);
                     break;
@@ -68,7 +67,7 @@ public class PropGenerator {
             type = PropType.COIN;
         }
         else if(i==1){
-            type = PropType.RECOVER;
+            type = PropType.LIFEPOTION;
         }
         else if(i==2){
             type = PropType.SHIELD;
