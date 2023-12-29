@@ -1,6 +1,7 @@
 package main.java.content.substance;
 
 import main.java.base.BaseEntity;
+import main.java.constant.CommonUtils;
 import main.java.content.player.Player;
 
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.*;
 public class Shield extends Prop{
     public Shield(int x, int y) {
         super(x, y);
+        this.setFrontImage(CommonUtils.getImage("shield.gif"));
     }
     @Override
     public <T extends BaseEntity> void intersectsHandle(T other) {
@@ -26,7 +28,7 @@ public class Shield extends Prop{
     public void drawImage(Graphics g) {
         g.drawImage(this.getImage(),this.getX(),this.getY(),this.getWidth(),this.getHeight(),null);
         //test
-        g.setColor(Color.BLUE);
-        g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
+        //g.setColor(Color.BLUE);
+        //g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
     }
 }

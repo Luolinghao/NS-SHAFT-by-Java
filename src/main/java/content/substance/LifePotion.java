@@ -1,6 +1,7 @@
 package main.java.content.substance;
 
 import main.java.base.BaseEntity;
+import main.java.constant.CommonUtils;
 import main.java.content.player.Player;
 
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.*;
 public class LifePotion extends Prop{
         public LifePotion(int x, int y) {
             super(x, y);
+            this.setFrontImage(CommonUtils.getImage("lifePotion.gif"));
         }
         @Override
         public <T extends BaseEntity> void intersectsHandle(T other) {
@@ -31,8 +33,8 @@ public class LifePotion extends Prop{
         public void drawImage(Graphics g) {
             g.drawImage(this.getImage(),this.getX(),this.getY(),this.getWidth(),this.getHeight(),null);
             //test
-            g.setColor(Color.RED);
-            g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
+            //g.setColor(Color.RED);
+            //g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
         }
 
 }

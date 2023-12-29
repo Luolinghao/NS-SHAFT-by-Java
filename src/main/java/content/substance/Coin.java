@@ -21,8 +21,8 @@ public class Coin extends Prop{
     public void drawImage(Graphics g) {
         g.drawImage(this.getImage(),this.getX(),this.getY(),this.getWidth(),this.getHeight(),null);
         //test
-        g.setColor(Color.ORANGE);
-        g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
+       // g.setColor(Color.ORANGE);
+        //g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
     }
 
 
