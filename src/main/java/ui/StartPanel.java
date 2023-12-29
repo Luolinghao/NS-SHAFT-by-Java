@@ -2,13 +2,8 @@ package main.java.ui;
 
 
 
-import main.java.constant.Keys;
-import main.java.constant.Mouse;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -36,7 +31,7 @@ public class StartPanel extends JPanel {
         startBuffer.drawString("地狱一百层",100,100);
 
         //绘制按钮
-        j1=new JButton("开始游戏");
+        j1 = new JButton("开始游戏");
         j1.setBounds(150,300,100,50);
         j1.addMouseListener(new MouseAdapter() {
             @Override

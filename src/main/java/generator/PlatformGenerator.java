@@ -44,7 +44,13 @@ public class PlatformGenerator {
      * @return 随机的平台类型
      */
     public static PlatformType choosePlatformType() {
-        int i = CommonUtils.nextInt(0,PlatformType.values().length);
-        return PlatformType.values()[i];
+        int i = CommonUtils.nextInt(0,100);
+        if(i < 50) {
+            return PlatformType.NORMAL;
+        }else if(i < 80) {
+            return PlatformType.FAKE;
+        } else {
+            return PlatformType.SPIKE;
+        }
     }
 }
