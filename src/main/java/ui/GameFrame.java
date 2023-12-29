@@ -23,6 +23,8 @@ import main.java.service.Service;
 public class GameFrame extends JFrame {
     private StartPanel sp;
 
+    private EndPanel ep;
+
     /**
      * 游戏界面的构造函数
      * <p>进行初始化界面配置</p>
@@ -60,6 +62,10 @@ public class GameFrame extends JFrame {
     //绘制初始界面画板
     public void startPanel() {
         sp = new StartPanel(this);
+    }
+
+    public void endPanel(){
+        ep = new EndPanel();
     }
 
     /**
@@ -125,7 +131,7 @@ public class GameFrame extends JFrame {
 
         //更新面板
         CommonUtils.task(5, () -> {
-
+            gamePanel.repaint();
             if (Service.players.allGameOver()) {
                 ConfigConstant.TIMER_ALL_STOP = true;
                 Audio.GAME_OVER.play();
@@ -134,10 +140,16 @@ public class GameFrame extends JFrame {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                this.dispose();
-                System.exit(0);//此处可以替换为打开新的窗体等
+                gamePanel.setVisible(false);
+                this.remove(gamePanel);
+                //删除已有画板
+                this.endPanel();
+                ep.setVisible(true);
+                this.add(ep);
+                this.revalidate();
+                this.repaint();
             }
-            gamePanel.repaint();
+
         });
 
         //玩家键盘监听
@@ -184,6 +196,10 @@ public class GameFrame extends JFrame {
 
     public StartPanel getStartPanel(){
         return sp;
+    }
+
+    public EndPanel getEndPanel(){
+        return ep;
     }
 
     /**
