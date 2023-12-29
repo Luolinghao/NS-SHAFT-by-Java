@@ -18,6 +18,7 @@ import main.java.service.Service;
  * 游戏界面类
  */
 public class GameFrame extends JFrame {
+    private StartPanel sp;
 
     /**
      * 游戏界面的构造函数
@@ -29,7 +30,8 @@ public class GameFrame extends JFrame {
         //默认关闭
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置窗体不可变
-        //this.setResizable(false);//固定窗体
+        this.setResizable(false);
+        //固定窗体
         //设置窗体居中
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension size = new Dimension(FrameConstant.FRAME_WIDTH, FrameConstant.FRAME_HEIGHT);
@@ -37,6 +39,24 @@ public class GameFrame extends JFrame {
         int height = toolkit.getScreenSize().height;
         this.setBounds((int) (width - size.getWidth()) / 2 ,
                 (int) (height - size.getHeight()) / 3, (int) size.getWidth(), (int) size.getHeight());
+
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Keys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                Keys.remove(e.getKeyCode());
+            }
+        });
+    }
+
+
+    //绘制初始界面画板
+    public void startPanel() {
+        sp = new StartPanel(this);
     }
 
     /**
@@ -64,9 +84,6 @@ public class GameFrame extends JFrame {
             //玩家移动
             player.action();
 
-            //System.out.println(player.getPlayerStatus().getHp().getValue());
-            System.out.println(Service.platform.getEntityList().size());
-
             Service.gravity.update();
             Service.platform.groundJudge(player);
         });
@@ -74,6 +91,7 @@ public class GameFrame extends JFrame {
         //生成道具与平台
         CommonUtils.task(1000, () -> {
             Service.platform.add(PlatformGenerator.build());
+            player.getPlayerStatus().updateScore(1);
         });
 
         //音乐
@@ -106,6 +124,7 @@ public class GameFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 Keys.add(e.getKeyCode());
+                System.out.println("a USED");
             }
 
             @Override
@@ -142,12 +161,16 @@ public class GameFrame extends JFrame {
 
     }
 
+    public StartPanel getStartPanel(){
+        return sp;
+    }
+
     /**
      * 程序入口
      * @param args 初始参数
      */
     public static void main(String[] args)  {
         GameFrame gameFrame = new GameFrame();
-        gameFrame.launch();
+        gameFrame.startPanel();
     }
 }
