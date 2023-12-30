@@ -6,9 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
-import main.java.base.IDraw;
 import main.java.constant.*;
 import main.java.content.platform.Ceiling;
 import main.java.content.platform.NormalPlatform;
@@ -21,9 +19,9 @@ import main.java.service.Service;
  * 游戏界面类
  */
 public class GameFrame extends JFrame {
-    private StartPanel sp;
+    private StartPanel startPanel;
 
-    private EndPanel ep;
+    private EndPanel endPanel;
 
     /**
      * 游戏界面的构造函数
@@ -61,11 +59,11 @@ public class GameFrame extends JFrame {
 
     //绘制初始界面画板
     public void startPanel() {
-        sp = new StartPanel(this);
+        startPanel = new StartPanel(this);
     }
 
     public void endPanel(){
-        ep = new EndPanel();
+        endPanel = new EndPanel();
     }
 
     /**
@@ -144,8 +142,8 @@ public class GameFrame extends JFrame {
                 this.remove(gamePanel);
                 //删除已有画板
                 this.endPanel();
-                ep.setVisible(true);
-                this.add(ep);
+                endPanel.setVisible(true);
+                this.add(endPanel);
                 this.revalidate();
                 this.repaint();
             }
@@ -195,11 +193,11 @@ public class GameFrame extends JFrame {
     }
 
     public StartPanel getStartPanel(){
-        return sp;
+        return startPanel;
     }
 
     public EndPanel getEndPanel(){
-        return ep;
+        return endPanel;
     }
 
     /**

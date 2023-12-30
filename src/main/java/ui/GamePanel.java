@@ -63,56 +63,8 @@ public class GamePanel extends JPanel {
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
         }
-        for (IDraw draw : this.draws) {
-            if (draw instanceof PlayerService) {
-                for(Player p : ((PlayerService) draw).getEntityList()){
-                    if(p instanceof Player)//如果draw是player类型则传入该draw打印第一位玩家
-                        player1WordWrite(p);
-                    if (p instanceof Player2) {
-                        player2WordWrite((Player2) p);
-                    }
-                }
-
-            }
-
-        }
     }
 
-    /**
-     * 单人模式文字部分打印
-     * @param player 一名玩家的需要展示的分数,血量,层数等
-     */
-    private void player1WordWrite(Player player){
-        Graphics pen1 = image.getGraphics();
-        Graphics pen2 = image.getGraphics();
-        pen1.setColor(Color.RED);
-        pen1.setFont(new Font("仿宋",Font.BOLD,40));
-        pen2.setColor(Color.green);
-        pen2.setFont(new Font("仿宋",Font.BOLD,40));
-        pen1.drawString("Player1",612,24*3);
-        pen1.drawString("血量",24*26,24*7);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*9);
-        pen1.drawString("层数",24*26,24*12);
-        pen2.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*26,24*14);
-        pen1.drawString("得分",24*26,24*17);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*19);
-    }
-
-    private void player2WordWrite(Player2 player){
-        Graphics pen1 = image.getGraphics();
-        Graphics pen2 = image.getGraphics();
-        pen1.setColor(Color.RED);
-        pen1.setFont(new Font("仿宋",Font.BOLD,40));
-        pen2.setColor(Color.green);
-        pen2.setFont(new Font("仿宋",Font.BOLD,40));
-        pen1.drawString("Player2",612,24*25);
-        pen1.drawString("血量",24*26,24*29);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*31);
-        pen1.drawString("层数",24*26,24*34);
-        pen2.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*26,24*36);
-        pen1.drawString("得分",24*26,24*39);
-        pen2.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*41);
-    }
 
     /**
      * paint方法

@@ -8,6 +8,7 @@ public class Player2 extends Player{
 
     public Player2(int x, int y) {
         super(x, y);
+        this.setPlayerNumber(2);
     }
 
     @Override

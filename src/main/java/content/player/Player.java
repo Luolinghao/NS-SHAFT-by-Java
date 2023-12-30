@@ -9,12 +9,15 @@ public class Player extends BaseGravityEntity {
 
     private PlayerStatus playerStatus;
 
+    private int playerNumber;
+
     public Player(int x, int y) {
         super(x, y);
         this.setWidth(32);
         this.setHeight(32);
         this.setXSpeed(5);
         this.setYSpeed(0);
+        this.setPlayerNumber(1);
         playerStatus = new PlayerStatus();
     }
 
@@ -97,5 +100,15 @@ public class Player extends BaseGravityEntity {
 
         //受伤，生命减少
         this.getPlayerStatus().getHp().subtract(hurtValue);
+    }
+
+
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
     }
 }
