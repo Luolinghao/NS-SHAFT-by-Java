@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class Player2 extends Player{
 
+    private final Image playerShield = CommonUtils.getImage("playerShield.gif");
+
     public Player2(int x, int y) {
         super(x, y);
         this.setPlayerNumber(2);
@@ -48,7 +50,9 @@ public class Player2 extends Player{
         super.drawImage(g);
         g.setColor(Color.WHITE);
         g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
-
+        if(this.getPlayerStatus().isHaveShield()) {
+            g.drawImage(playerShield,getX(),getY(),getWidth(),getHeight(),null);
+        }
     }
 
 }

@@ -7,7 +7,8 @@ import java.awt.*;
 
 public class Player extends BaseGravityEntity {
 
-    private PlayerStatus playerStatus;
+    private final PlayerStatus playerStatus;
+    private final Image playerShield = CommonUtils.getImage("playerShield.gif");
 
     private int playerNumber;
 
@@ -77,6 +78,9 @@ public class Player extends BaseGravityEntity {
     public void drawImage(Graphics g) {
         super.drawImage(g);
         playerStatus.drawImage(g);
+        if(this.getPlayerStatus().isHaveShield()) {
+            g.drawImage(playerShield,getX(),getY(),getWidth(),getHeight(),null);
+        }
     }
 
     @Override
