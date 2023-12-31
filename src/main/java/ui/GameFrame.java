@@ -93,31 +93,7 @@ public class GameFrame extends JFrame {
         }
         Service.platform.add(ceiling);
         Service.platform.add(platform);
-        //刷新每个实体的动作
-        CommonUtils.task(25, () -> {
 
-            //玩家移动
-
-            entityServiceUpdateWith(player1,player2);
-            player1.action();
-            player2.action();
-
-            Service.players.update();
-            Service.gravity.update();
-            for(Player p : Service.players.getEntityList()){
-                Service.platform.groundJudge(p);
-            }
-
-        });
-
-        //生成道具与平台
-        CommonUtils.task(1000, () -> {
-            Service.platform.add(PlatformGenerator.build());
-            for(Player p : Service.players.getEntityList()){
-                p.getPlayerStatus().updateScore(1);
-            }
-
-        });
 
         //音乐
         CommonUtils.task(30 * 1000, Audio.BGM::play);
@@ -127,8 +103,24 @@ public class GameFrame extends JFrame {
         this.add(gamePanel);
         this.setVisible(true);
 
+        CommonUtils.task(25,() -> {
+            for(Player p : Service.players.getEntityList()){
+                Service.platform.groundJudge(p);
+            }
+            entityServiceUpdateWith(player1,player2);
+
+            Service.gravity.update();
+
+            player1.action();
+            player2.action();
+
+
+
+            Service.players.update();
+        });
         //更新面板
         CommonUtils.task(5, () -> {
+
             gamePanel.repaint();
             if (Service.players.allGameOver()) {
                 ConfigConstant.TIMER_ALL_STOP = true;
@@ -146,6 +138,15 @@ public class GameFrame extends JFrame {
                 this.add(endPanel);
                 this.revalidate();
                 this.repaint();
+            }
+
+        });
+
+        //生成道具与平台
+        CommonUtils.task(1000, () -> {
+            Service.platform.add(PlatformGenerator.build());
+            for(Player p : Service.players.getEntityList()){
+                p.getPlayerStatus().updateScore(1);
             }
 
         });

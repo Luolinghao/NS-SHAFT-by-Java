@@ -14,7 +14,7 @@ public abstract class BaseService<T> implements IBaseService<T>{
      * 本服务面向的实体列表
      * <p>考虑线程安全使用CopyOnWriteArrayList</p>
      */
-    private CopyOnWriteArrayList<T> entityList = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<T> entityList = new CopyOnWriteArrayList<>();
 
     /**
      * 服务初始化

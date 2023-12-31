@@ -8,15 +8,13 @@ import java.awt.*;
 
 public class SpikePlatform extends BasePlatform {
 
-    private int hurtPeriod = 50;
+    private final int hurtPeriod = 50;
 
     private int timeSinceLastHurt = 0;
 
-    private boolean isIntersectsWithPlayer = false;
-
     private boolean isFirstIntersectWithPlayer = true;
 
-    private int hurtValue = 1;
+    private final int hurtValue = 1;
 
 
 
@@ -30,7 +28,7 @@ public class SpikePlatform extends BasePlatform {
 
     @Override
     public Rectangle getRectangle() {
-        return new Rectangle(getX(), getY() + 10, getWidth(), getHeight());
+        return new Rectangle(getX(), getY() , getWidth(), getHeight());
     }
 
     @Override

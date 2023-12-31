@@ -2,12 +2,6 @@ package main.java.ui;
 
 import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
-import main.java.constant.ConfigConstant;
-import main.java.constant.PlatformConstant;
-import main.java.content.player.Player;
-import main.java.content.player.Player2;
-import main.java.service.PlayerService;
-import main.java.service.Service;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +29,6 @@ public class GamePanel extends JPanel {
     private final Image rightboundImage = CommonUtils.getImage("wall.png");
     private final Image verticalBoundImage = CommonUtils.getImage("wall.png");
     private final Image horizonBoundImage = CommonUtils.getImage("horizon.png");
-    private final Image ceilingImage = CommonUtils.getImage("ceiling.png");
 
     /**
      * GamePanel构造函数

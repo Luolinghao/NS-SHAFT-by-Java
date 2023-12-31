@@ -8,10 +8,11 @@ import main.java.base.IGravity;
  * <p>实现游戏的重力功能,负责维护所有受重力影响的实体</p>
  */
 public class GravityService extends BaseService<IGravity> {
+
     /**
-     * 重力加速度(比例系数)
+     * 下落可以达到的最大速度
      */
-    private static final int g = 10;
+    private static final int maxSpeed = 9;
 
     /**
      * 重力服务单例
@@ -46,8 +47,13 @@ public class GravityService extends BaseService<IGravity> {
             }
            //重力判断
             if(!entity.isOnTheGround()) {
-                int dy = g * entity.getQuality();
-                entity.setY(entity.getY() + dy);
+                if (entity.getYSpeed() >= maxSpeed) {
+                    continue;
+                }
+                int dv =  entity.getQuality();
+                entity.setYSpeed(entity.getYSpeed() + dv);
+            }else {
+                entity.setYSpeed(0);
             }
        }
     }

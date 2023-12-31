@@ -1,6 +1,5 @@
 package main.java.base;
 
-import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**

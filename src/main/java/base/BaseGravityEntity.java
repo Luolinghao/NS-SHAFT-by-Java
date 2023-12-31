@@ -1,6 +1,5 @@
 package main.java.base;
 
-import main.java.content.platform.BasePlatform;
 
 /**
  * 基础重力实体类
@@ -13,7 +12,12 @@ public abstract class BaseGravityEntity extends BaseEntity implements IGravity {
      */
     private boolean onTheGround;
 
-
+    /**
+     * BaseGravityEntity类的构造函数
+     * <p>调用BaseEntity的构造函数进行初始化</p>
+     * @param x 左上顶点x坐标
+     * @param y 左上顶点y坐标
+     */
     public BaseGravityEntity(int x,int y) {
         super(x,y);
     }

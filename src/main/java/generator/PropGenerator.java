@@ -38,7 +38,7 @@ public class PropGenerator {
                     prop.moveWithPlatform(platform);
                     platform.setProp(prop);
                     break;
-                case LIFEPOTION:
+                case LIFE_POTION:
                     prop = new LifePotion(buildX,buildY);
                     prop.moveWithPlatform(platform);
                     platform.setProp(prop);
@@ -67,14 +67,12 @@ public class PropGenerator {
             type = PropType.COIN;
         }
         else if(i==1){
-            type = PropType.LIFEPOTION;
+            type = PropType.LIFE_POTION;
         }
         else if(i==2){
             type = PropType.SHIELD;
         }
-        else if(i==3||i==4||i==5){
-            type = null;
-        }
+
         return  type;
     }
 }

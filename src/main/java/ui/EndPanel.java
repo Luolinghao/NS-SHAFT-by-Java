@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EndPanel extends JPanel {
-    private Image image;
+
 
     private final Image endImage = CommonUtils.getImage("background.png");
     //结束图片

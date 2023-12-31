@@ -39,7 +39,7 @@ public abstract class BasePlatform extends BaseEntity {
         Rectangle myself = this.getRectangle();
         Rectangle otherEntityRectangle = otherEntity.getRectangle();
 
-        return otherEntityRectangle.getY() < myself.getY() &&
+        return otherEntityRectangle.getY() + otherEntityRectangle.getHeight() - 15 < myself.getY() &&
                 myself.intersects(otherEntityRectangle);
     }
 

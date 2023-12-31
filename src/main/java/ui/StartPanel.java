@@ -3,12 +3,9 @@ package main.java.ui;
 
 
 import main.java.constant.ConfigConstant;
-import main.java.constant.Keys;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -20,12 +17,8 @@ public class StartPanel extends JPanel {
     private BufferedImage startImage;
     private Graphics startBuffer;
 
-    private Image image;
-
-    private ImageIcon imageIcon;
-
-    private JButton singleMode;
-    private JButton doubleMode;
+    private final JButton singleMode;
+    private final JButton doubleMode;
 
     public StartPanel(GameFrame gameFrame){
         startImage=new BufferedImage(24*25,24*45,BufferedImage.TYPE_INT_RGB);
@@ -83,7 +76,7 @@ public class StartPanel extends JPanel {
 
     }
 
-    public JButton getsingleMode(){
+    public JButton getSingleMode(){
         return singleMode;
     }
 

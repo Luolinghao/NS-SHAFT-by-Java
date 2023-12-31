@@ -14,7 +14,9 @@ import java.awt.*;
 public abstract class BaseEntityService<T extends BaseEntity> extends BaseService<T>{
 
     /**
-     * 更新服务列表并执行每个实体对象的action
+     * <p>1.执行服务</p>
+     * <p>2.更新服务列表</p>
+     * <p>3.执行每个实体对象的action</p>
      */
     public void update(Player... players) {
 
@@ -53,7 +55,10 @@ public abstract class BaseEntityService<T extends BaseEntity> extends BaseServic
                 entity.getY() < -entity.getHeight();
     }
 
-
+    /**
+     * 将服务列表的每个实体在对应画板上进行绘制
+     * @param g 需要绘制的画布的Graphics对象
+     */
     @Override
     public void drawImage(Graphics g) {
         this.getEntityList().forEach(i -> i.drawImage(g));

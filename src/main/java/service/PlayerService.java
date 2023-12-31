@@ -1,12 +1,10 @@
 package main.java.service;
+
 import main.java.base.BaseService;
 import main.java.constant.PlatformConstant;
-import main.java.content.platform.BasePlatform;
 import main.java.content.player.Player;
-import main.java.content.player.Player2;
 
 import java.awt.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class PlayerService extends BaseService<Player> {
 
@@ -91,10 +89,8 @@ public class PlayerService extends BaseService<Player> {
                 playerCount--;
             }
         }
-        if(playerCount == 0){
-            return true;
-        }
-        return false;
+
+        return playerCount == 0;
     }
 
 

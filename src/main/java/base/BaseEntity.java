@@ -59,10 +59,17 @@ public abstract class BaseEntity implements IDraw{
      */
     private boolean removable = false;
 
-    public BaseEntity() {
+    /**
+     * 空构造函数
+     */
+    public BaseEntity() {}
 
-    }
-
+    /**
+     * BaseEntity构造函数
+     * <p>初始化默认宽高，朝向以及左顶点坐标</p>
+     * @param x 左顶点x坐标
+     * @param y 左顶点y坐标
+     */
     public BaseEntity(int x, int y) {
         this.width = EntityConstant.NORMAL_ENTITY_SIZE;
         this.height = EntityConstant.NORMAL_ENTITY_SIZE;
@@ -134,81 +141,152 @@ public abstract class BaseEntity implements IDraw{
 
     /**
      * 相交处理
+     * <p>需要执行相交处理的类需要覆写本方法</p>
      * @param other 另一个实体
      */
-    public <T extends BaseEntity> void intersectsHandle(T other) {
+    public <T extends BaseEntity> void intersectsHandle(T other) {}
 
-    }
-
+    /**
+     * 跟随平台移动
+     * <p>将本实体的y速度设置为平台的速度</p>
+     * @param platform 跟随的平台
+     */
     public void moveWithPlatform(BasePlatform platform) {
         setYSpeed(platform.getYSpeed());
     }
 
-
+    /**
+     * 获取左上顶点x坐标
+     * @return 左上顶点x坐标值
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * 设置左上顶点x坐标
+     * @param x 左上顶点x坐标
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * 获取左上顶点y坐标
+     * @return 左上顶点y坐标值
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * 设置左上顶点y坐标
+     * @param y 左上顶点y坐标
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     * 获得对象高度
+     * @return 对象高度的值
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * 设置对象高度的值
+     * @param height 对象的高度
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     * 获取对象宽度的值
+     * @return 对象宽度的值
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * 设置对象宽度的值
+     * @param width 对象的宽度
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * 获取对象的朝向
+     * @return 对象的朝向
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * 设置对象的朝向
+     * @param direction 对象朝向
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
+    /**
+     * 获取对象的x轴速度值
+     * @return x轴速度值
+     */
     public int getXSpeed() {
         return xSpeed;
     }
 
+    /**
+     * 设置对象x轴速度
+     * @param xSpeed x轴速度
+     */
     public void setXSpeed(int xSpeed) {
         this.xSpeed = xSpeed;
     }
 
+    /**
+     * 获取对象的y轴速度值
+     * @return y轴速度值
+     */
     public int getYSpeed() {
         return ySpeed;
     }
 
+    /**
+     * 设置对象y轴速度
+     * @param ySpeed y轴速度
+     */
     public void setYSpeed(int ySpeed) {
         this.ySpeed = ySpeed;
     }
 
+    /**
+     * 设置对象正面图片
+     * @param frontImage 对象的正面图片
+     */
     public void setFrontImage(Image frontImage) {
         this.frontImage = frontImage;
     }
 
+    /**
+     * 判定本对象是否满足移除条件
+     * @return 可以移除返回true,否则返回false
+     */
     public boolean isRemovable() {
         return removable;
     }
 
+    /**
+     * 设置可移除变量的布尔值
+     * @param removable true or false
+     */
     public void setRemovable(boolean removable) {
         this.removable = removable;
     }

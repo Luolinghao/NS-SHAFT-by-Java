@@ -4,7 +4,7 @@ import java.awt.*;
 
 public enum PropType {
     COIN("coin.gif"),
-    LIFEPOTION("lifePotion.gif"),
+    LIFE_POTION("lifePotion.gif"),
     SHIELD("shield.gif");
 
 

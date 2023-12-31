@@ -2,13 +2,12 @@ package main.java.content.player;
 
 import main.java.base.IDraw;
 import main.java.constant.PlayerMovingState;
-import main.java.constant.PlayerMovingState;
 import main.java.content.Attribute;
 
 import java.awt.*;
 
 public class PlayerStatus implements IDraw {
-    private Attribute hp;
+    private final Attribute hp;
     
     private int score;
     private int platformCount;

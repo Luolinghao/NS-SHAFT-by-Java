@@ -31,11 +31,6 @@ public class Player extends BaseGravityEntity {
         return !this.playerStatus.getHp().isNormal();
     }
 
-    @Override
-    public void action() {
-        super.action();
-        //System.out.println(getX() + "," + getY());
-    }
 
     @Override
     public void xMove() {
@@ -69,10 +64,6 @@ public class Player extends BaseGravityEntity {
 
     }
 
-    @Override
-    public void yMove() {
-        super.yMove();
-    }
 
     @Override
     public void drawImage(Graphics g) {

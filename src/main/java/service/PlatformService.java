@@ -3,6 +3,7 @@ package main.java.service;
 import main.java.base.BaseEntityService;
 import main.java.base.BaseGravityEntity;
 import main.java.content.platform.BasePlatform;
+import main.java.content.platform.SpikePlatform;
 
 import java.awt.*;
 
@@ -58,6 +59,14 @@ public class PlatformService extends BaseEntityService<BasePlatform> {
             if(platform.isAboveIntersectsWith(entity)) {
                 entity.setOnTheGround(true);
                 entity.moveWithPlatform(platform);
+
+                //修正人物坐标使其站在平台上
+                if(platform instanceof SpikePlatform) {
+                    entity.setY(platform.getY() + 8 - entity.getHeight());
+                }else {
+                    entity.setY(platform.getY() - 5 - entity.getHeight());
+                }
+
                 return;
             }
         }

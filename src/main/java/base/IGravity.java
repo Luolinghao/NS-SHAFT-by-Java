@@ -17,11 +17,25 @@ public interface IGravity {
      */
     int getQuality();
 
+    /**
+     * 判断该对象是否不受重力影响
+     * @return 如果不受重力影响返回true,否则返回false
+     */
     boolean isRemovable();
 
+    /**
+     * 获取本对象的左上顶点y轴坐标
+     * @return 左上顶点y坐标
+     */
     int getY();
 
+    /**
+     * 设置y轴坐标
+     * @param y 左上顶点y坐标
+     */
     void setY(int y);
 
+    int getYSpeed();
 
+    void setYSpeed(int ySpeed);
 }

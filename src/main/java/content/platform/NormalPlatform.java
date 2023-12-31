@@ -1,9 +1,7 @@
 package main.java.content.platform;
 
-import main.java.constant.CommonUtils;
 import main.java.constant.PlatformType;
 
-import java.awt.*;
 
 public class NormalPlatform extends BasePlatform {
 
