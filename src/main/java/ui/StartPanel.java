@@ -27,11 +27,17 @@ public class StartPanel extends JPanel {
     private final JButton doubleMode;
 
     private void drawBufferedImage() {
+        /**
+        *绘制开始界面背景图片
+         */
+
         image = this.createImage(this.getWidth(), this.getHeight());
         Graphics g = image.getGraphics();
         g.drawImage(startbackgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
 
-        //绘制
+        /**
+         * 绘制
+         */
         for (IDraw draw : this.draws) {
             draw.drawImage(g);
         }
@@ -41,20 +47,27 @@ public class StartPanel extends JPanel {
     public StartPanel(GameFrame gameFrame) {
 
 
+        /**
+         *   单人模式绘制按钮
+         */
 
-        //单人模式绘制按钮
         singleMode = new JButton("单人模式");
         singleMode.setFont(new Font("仿宋", Font.BOLD, 40));
         singleMode.setBounds(24 * 10, 500, 24 * 15, 24 * 2);
         singleMode.setBackground(Color.red);
 
-        //双人模式绘制按钮
+        /**
+         *  双人模式绘制按钮
+         */
+
         doubleMode = new JButton("双人模式");
         doubleMode.setFont(new Font("仿宋", Font.BOLD, 40));
         doubleMode.setBounds(24 * 10, 600, 24 * 15, 24 * 2);
         doubleMode.setBackground(Color.blue);
 
-        //单人模式
+        /**
+         *  单人模式
+         */
         singleMode.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -65,7 +78,9 @@ public class StartPanel extends JPanel {
             }
         });
 
-        //双人模式
+        /**
+         *  双人模式
+         */
         doubleMode.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

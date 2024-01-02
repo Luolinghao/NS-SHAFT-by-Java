@@ -22,6 +22,7 @@ public class GameFrame extends JFrame {
     private StartPanel startPanel;
 
     private EndPanel endPanel;
+    StartPanel sp;
 
     /**
      * 游戏界面的构造函数

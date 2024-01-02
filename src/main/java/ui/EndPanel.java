@@ -8,14 +8,15 @@ import java.awt.*;
 public class EndPanel extends JPanel {
 
 
-    private final Image endImage = CommonUtils.getImage("background.png");
-    //结束图片
+    private final Image endImage = CommonUtils.getImage("gameover.jpg");
+    /**
+     * 绘制结束界面图片
+     */
 
     /**
      * 构造函数
      */
     public EndPanel() {
-        this.setBackground(Color.red);
         this.setBounds(0,0,24*25,24*45);
         this.setVisible(true);
         JLabel jLabel = new JLabel();
