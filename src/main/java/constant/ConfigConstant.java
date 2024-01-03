@@ -1,5 +1,6 @@
 package main.java.constant;
 
+
 /**
  * 系统配置常量
  */
@@ -24,7 +25,7 @@ public class ConfigConstant {
 
     public static boolean START_PANEL_IS_FIRST_START = true;
 
-    public static final String IMAGE_RESOURCES_PATH = "src/main/resources/image/";
+    public static final String IMAGE_RESOURCES_PATH = "/main/resources/image/";
 
     public static boolean START = false;
 
