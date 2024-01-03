@@ -85,9 +85,9 @@ public abstract class BaseEntity implements IDraw{
     @Override
     public void drawImage(Graphics g) {
         g.drawImage(this.getImage(),this.x,this.y,this.width,this.height,null);
-        //test
-        g.setColor(Color.GREEN);
-        g.drawRect(x,y,width,height);
+        //Intersect test
+        //g.setColor(Color.GREEN);
+        //g.drawRect(x,y,width,height);
     }
 
     /**

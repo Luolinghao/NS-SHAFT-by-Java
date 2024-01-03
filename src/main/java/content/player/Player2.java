@@ -56,6 +56,7 @@ public class Player2 extends Player {
             this.getPlayerStatus().setMovingState(PlayerMovingState.RIGHT_RUN);
             this.setDirection(Direction.RIGHT);
         }
+
     }
 
     /**
@@ -66,10 +67,11 @@ public class Player2 extends Player {
     @Override
     public void drawImage(Graphics g) {
         super.drawImage(g);
-        g.setColor(Color.WHITE);
-        g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-        if (this.getPlayerStatus().isHaveShield()) {
-            g.drawImage(playerShield, getX(), getY(), getWidth(), getHeight(), null);
+        //g.setColor(Color.WHITE);
+        //g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
+        if(this.getPlayerStatus().isHaveShield()) {
+            g.drawImage(playerShield,getX(),getY(),getWidth(),getHeight(),null);
         }
     }
+
 }
