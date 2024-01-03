@@ -50,6 +50,7 @@ public class StartPanel extends JPanel {
         /**
          *   单人模式绘制按钮
          */
+        this.setLayout(null);
 
         singleMode = new JButton("单人模式");
         singleMode.setFont(new Font("仿宋", Font.BOLD, 40));
@@ -59,6 +60,7 @@ public class StartPanel extends JPanel {
         /**
          *  双人模式绘制按钮
          */
+        this.setLayout(null);
 
         doubleMode = new JButton("双人模式");
         doubleMode.setFont(new Font("仿宋", Font.BOLD, 40));
