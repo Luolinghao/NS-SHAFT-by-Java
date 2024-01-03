@@ -5,15 +5,8 @@ public enum Direction {
     RIGHT,
     FRONT;
 
-    public boolean isLeft() {
-        return this.equals(LEFT);
-    }
-
     public boolean isRight() {
         return this.equals(RIGHT);
     }
 
-    public boolean isFront() {
-        return this.equals(FRONT);
-    }
 }

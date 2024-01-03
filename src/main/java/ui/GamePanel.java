@@ -3,8 +3,12 @@ package main.java.ui;
 import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * 游戏画布类
@@ -24,6 +28,8 @@ public class GamePanel extends JPanel {
     /**
      * (游戏界面)背景图片
      */
+
+
     private final Image backgroundImage = CommonUtils.getImage("background.png");
     private final Image leftboundImage = CommonUtils.getImage("wall.png");
     private final Image rightboundImage = CommonUtils.getImage("wall.png");

@@ -48,7 +48,9 @@ public class CommonUtils {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                //当结束开关打开时，清除所有定时器
+                /**
+                 * 当结束开关打开时，清除所有定时器
+                 */
                 if (ConfigConstant.TIMER_ALL_STOP) {
                     timer.cancel();
                     return;
