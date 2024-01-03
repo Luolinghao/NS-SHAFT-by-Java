@@ -48,8 +48,8 @@ public class Player2 extends Player{
     @Override
     public void drawImage(Graphics g) {
         super.drawImage(g);
-        g.setColor(Color.WHITE);
-        g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
+        //g.setColor(Color.WHITE);
+        //g.drawRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
         if(this.getPlayerStatus().isHaveShield()) {
             g.drawImage(playerShield,getX(),getY(),getWidth(),getHeight(),null);
         }
