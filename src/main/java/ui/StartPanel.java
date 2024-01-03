@@ -19,6 +19,7 @@ public class StartPanel extends JPanel {
 
     private final JButton singleMode;
     private final JButton doubleMode;
+    private final JButton out;
 
     private void drawBufferedImage() {
 
@@ -55,6 +56,16 @@ public class StartPanel extends JPanel {
         doubleMode.setBackground(Color.blue);
 
         /**
+         * 退出按钮绘制
+         */
+        this.setLayout(null);//布局为空。防止setBounds失效
+
+        out = new JButton("退出游戏");
+        out.setFont(new Font("仿宋", Font.BOLD, 40));
+        out.setBounds(24 * 10, 700, 24 * 15, 24 * 2);
+        out.setBackground(Color.green);
+
+        /**
          *  单人模式
          */
         singleMode.addMouseListener(new MouseAdapter() {
@@ -82,9 +93,21 @@ public class StartPanel extends JPanel {
             }
         });
 
+        /**
+         *  退出游戏
+         */
+        out.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ConfigConstant.TIMER_ALL_STOP = true;
+                gameFrame.removeAll();
+                gameFrame.dispose();
+            }
+        });
 
         this.add(singleMode);
         this.add(doubleMode);
+        this.add(out);
 
         gameFrame.add(this);
 
