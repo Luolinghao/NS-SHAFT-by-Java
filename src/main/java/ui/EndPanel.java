@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 public class EndPanel extends JPanel {
 
 
-    private final Image endImage = CommonUtils.getImage("gameover.jpg");
+    private final Image endImage = CommonUtils.getImage("endImage.jpg");
 
 
     /**
@@ -22,19 +22,19 @@ public class EndPanel extends JPanel {
 
         this.setBounds(0,0,24*25,24*45);
 
+        this.setBackground(Color.BLUE);
 
 
-
-        Button restart = new Button("restart");
+        Button restart = new Button("REPLAY");
         restart.setFont(new Font("仿宋", Font.BOLD, 40));
-        restart.setBounds(24 * 10, 500, 24 * 15, 24 * 2);
-        restart.setBackground(Color.blue);
+        restart.setBounds(24 * 10, 420, 24 * 15, 24 * 2);
+        restart.setBackground(Color.BLUE);
         this.add(restart);
 
-        Button home = new Button("home");
+        Button home = new Button("MENU");
         home.setFont(new Font("仿宋", Font.BOLD, 40));
-        home.setBounds(24 * 10, 600, 24 * 15, 24 * 2);
-        home.setBackground(Color.blue);
+        home.setBounds(24 * 10, 520, 24 * 15, 24 * 2);
+        home.setBackground(Color.BLUE);
         this.add(home);
 
 
@@ -69,7 +69,6 @@ public class EndPanel extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        g.drawImage(endImage, 0, 0, this);
+        g.drawImage(endImage, 0, 0, 24*35,  24*45,this);
     }
-
 }
