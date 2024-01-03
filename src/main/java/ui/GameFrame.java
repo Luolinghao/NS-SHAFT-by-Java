@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import main.java.constant.*;
 import main.java.content.platform.Ceiling;
@@ -22,7 +20,6 @@ public class GameFrame extends JFrame {
     private StartPanel startPanel;
 
     private EndPanel endPanel;
-    StartPanel sp;
 
     /**
      * 游戏界面的构造函数
@@ -64,7 +61,7 @@ public class GameFrame extends JFrame {
     }
 
     public void endPanel(){
-        endPanel = new EndPanel();
+        endPanel = new EndPanel(this);
     }
 
     /**
@@ -105,41 +102,49 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
 
         CommonUtils.task(25,() -> {
-            for(Player p : Service.players.getEntityList()){
+
+            for (Player p : Service.players.getEntityList()) {
                 Service.platform.groundJudge(p);
             }
-            entityServiceUpdateWith(player1,player2);
+            entityServiceUpdateWith(player1, player2);
 
             Service.gravity.update();
-
+            
             player1.action();
             player2.action();
-
-
 
             Service.players.update();
         });
         //更新面板
         CommonUtils.task(5, () -> {
+                gamePanel.repaint();
+                if (Service.players.allGameOver()) {
+                    ConfigConstant.TIMER_ALL_STOP = true;
+                    Audio.GAME_OVER.play();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-            gamePanel.repaint();
-            if (Service.players.allGameOver()) {
-                ConfigConstant.TIMER_ALL_STOP = true;
-                Audio.GAME_OVER.play();
-                try {
-                    Thread.sleep( 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    //清空服务列表
+                    Service.platform.getEntityList().clear();
+                    Service.gravity.getEntityList().clear();
+                    Service.players.getEntityList().clear();
+                    Service.substance.getEntityList().clear();
+                    //清空层数
+                    PlatformConstant.PLATFORM_COUNT = 0;
+
+
+                    gamePanel.setVisible(false);
+                    this.remove(gamePanel);
+                    //删除已有画板
+                    this.endPanel();
+                    endPanel.setVisible(true);
+                    this.add(endPanel);
+                    this.revalidate();
+                    this.repaint();
                 }
-                gamePanel.setVisible(false);
-                this.remove(gamePanel);
-                //删除已有画板
-                this.endPanel();
-                endPanel.setVisible(true);
-                this.add(endPanel);
-                this.revalidate();
-                this.repaint();
-            }
 
         });
 
@@ -157,7 +162,7 @@ public class GameFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 Keys.add(e.getKeyCode());
-                System.out.println("a USED");
+                System.out.println(e.getKeyChar() + " is used");
             }
 
             @Override
@@ -166,22 +171,6 @@ public class GameFrame extends JFrame {
             }
         });
 
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX() + "," + e.getY());
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                super.mouseReleased(e);
-            }
-        });
     }
 
     /**
@@ -201,7 +190,6 @@ public class GameFrame extends JFrame {
     public EndPanel getEndPanel(){
         return endPanel;
     }
-
     /**
      * 程序入口
      * @param args 初始参数

@@ -2,45 +2,32 @@ package main.java.ui;
 
 
 
-import main.java.base.IDraw;
 import main.java.constant.CommonUtils;
 import main.java.constant.ConfigConstant;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 //初始界面画板
 public class StartPanel extends JPanel {
 
-    private Graphics startBuffer;
-    private BufferedImage startbackground;
     private final Image startbackgroundImage = CommonUtils.getImage("startbackground.jpg");
     private Image image;
-    private final IDraw[] draws;
+
 
     private final JButton singleMode;
     private final JButton doubleMode;
 
     private void drawBufferedImage() {
-        /**
-        *绘制开始界面背景图片
-         */
+
 
         image = this.createImage(this.getWidth(), this.getHeight());
         Graphics g = image.getGraphics();
         g.drawImage(startbackgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
 
-        /**
-         * 绘制
-         */
-        for (IDraw draw : this.draws) {
-            draw.drawImage(g);
-        }
+
     }
 
 
@@ -73,6 +60,7 @@ public class StartPanel extends JPanel {
         singleMode.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                ConfigConstant.GAME_MODE_TWO_PLAYER = false;
                 gameFrame.getStartPanel().setVisible(false);
                 gameFrame.remove(gameFrame.getStartPanel());
                 gameFrame.launch();
@@ -103,11 +91,9 @@ public class StartPanel extends JPanel {
         gameFrame.setVisible(true);
 
 
-        draws = new IDraw[0];
     }
 
     @Override
-
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
@@ -116,7 +102,4 @@ public class StartPanel extends JPanel {
 
     }
 
-    public JButton getSingleMode() {
-        return singleMode;
-    }
 }
