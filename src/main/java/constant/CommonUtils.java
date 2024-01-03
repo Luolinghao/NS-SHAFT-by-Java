@@ -4,6 +4,7 @@ import main.java.base.ITimer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +29,13 @@ public class CommonUtils {
      * @return 创建的Image对象
      */
     public static Image getImage(String imageName) {
-        return new ImageIcon(ConfigConstant.IMAGE_RESOURCES_PATH + imageName).getImage();
+        try {
+            URL url = new URL(ConfigConstant.class.getResource(ConfigConstant.IMAGE_RESOURCES_PATH) + imageName);
+            return new ImageIcon(url).getImage();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
