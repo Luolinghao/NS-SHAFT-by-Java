@@ -18,7 +18,7 @@ public class FrameConstant {
     /**
      * 窗体高度
      */
-    public static final int FRAME_HEIGHT = 24*45;
+    public static final int FRAME_HEIGHT = 24*40;
 
     /**
      * 窗体左上角x坐标

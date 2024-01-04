@@ -56,8 +56,8 @@ public class GamePanel extends JPanel {
         g.drawImage(rightboundImage, this.getWidth()-264, 0, 24, this.getHeight(), this);
         g.drawImage(verticalBoundImage,this.getWidth()-24,0,24,this.getHeight(),this);
         g.drawImage(horizonBoundImage,582,0,219,22,this);
-        g.drawImage(horizonBoundImage,582,24 * 22,219,22,this);
-        g.drawImage(horizonBoundImage,24 * 24,this.getHeight() - 22,24 * 9,22,this);
+        g.drawImage(horizonBoundImage,582,24 * 18,219,22,this);
+        g.drawImage(horizonBoundImage,582,this.getHeight() - 22,219,22,this);
         //绘制
         for (IDraw draw : this.draws) {
             draw.drawImage(g);

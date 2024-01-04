@@ -52,23 +52,23 @@ public class PlayerService extends BaseService<Player> {
     private void playerMessageWrite(Player player, Graphics g) {
 
         //dy = 24*22  每个玩家信息y坐标差为24*22
-        final int dy = (player.getPlayerNumber() - 1) * 24*22 ;
+        final int dy = (player.getPlayerNumber() - 1) * 24*19 ;
 
         //统一设置字体
         g.setFont(new Font("仿宋",Font.BOLD,40));
         //两种颜色的字，分别画,先画属性名称
         g.setColor(Color.RED);
-        g.drawString("Player" + player.getPlayerNumber(),612,24*3 + dy);
-        g.drawString("血量",24*26,24*7 + dy);
-        g.drawString("层数",24*26,24*12 + dy);
-        g.drawString("得分",24*26,24*17 + dy);
+        g.drawString("Player" + player.getPlayerNumber(),612,64 + dy);
+        g.drawString("血量",24*26,24*5 + dy);
+        g.drawString("层数",24*26,24*10 + dy);
+        g.drawString("得分",24*26,24*15 + dy);
 
         //再画属性值
         g.setColor(Color.green);
         g.setFont(new Font("仿宋",Font.BOLD,40));
-        g.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*26,24*9 + dy);
-        g.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*26,24*14 + dy);
-        g.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*26,24*19 + dy);
+        g.drawString(String.valueOf(player.getPlayerStatus().getHp().getValue()),24*27,24*7 + dy);
+        g.drawString(String.valueOf(PlatformConstant.PLATFORM_COUNT),24*27,24*12 + dy);
+        g.drawString(String.valueOf(player.getPlayerStatus().getScore()),24*27,24*17 + dy);
     }
 
 
