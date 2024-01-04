@@ -28,14 +28,14 @@ public class EndPanel extends JPanel {
 
         Button restart = new Button("REPLAY");
         restart.setFont(new Font("仿宋", Font.BOLD, 40));
-        restart.setBounds(24 * 10, 420, 24 * 15, 24 * 2);
-        restart.setBackground(Color.BLUE);
+        restart.setBounds(24 * 10, 475, 24 * 15, 24 * 2);
+        restart.setBackground(Color.RED);
         this.add(restart);
 
         Button home = new Button("MENU");
         home.setFont(new Font("仿宋", Font.BOLD, 40));
-        home.setBounds(24 * 10, 520, 24 * 15, 24 * 2);
-        home.setBackground(Color.BLUE);
+        home.setBounds(24 * 10, 600, 24 * 15, 24 * 2);
+        home.setBackground(Color.RED);
         this.add(home);
 
         restart.addMouseListener(new MouseAdapter() {
