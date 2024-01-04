@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/new_ns_shaft_jar</output-path>
     <root id="archive" name="new-ns-shaft.jar">
       <element id="module-output" name="new-ns-shaft" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources/image" />
     </root>
   </artifact>
 </component>
