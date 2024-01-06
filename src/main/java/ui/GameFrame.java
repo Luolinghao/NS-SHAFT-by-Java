@@ -162,7 +162,6 @@ public class GameFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 Keys.add(e.getKeyCode());
-                System.out.println(e.getKeyChar() + " is used");
             }
 
             @Override

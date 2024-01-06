@@ -40,19 +40,19 @@ public class StartPanel extends JPanel {
         // 单人模式按钮
         singleMode = new JButton("单人模式");
         singleMode.setFont(new Font("仿宋", Font.BOLD, 40));
-        singleMode.setBounds(24 * 10, 500, 24 * 15, 24 * 2);
-        singleMode.setBackground(Color.RED);
+        singleMode.setBounds(24 * 10, 500, 24 * 13, 24 * 2);
+        singleMode.setBackground(Color.magenta);
 
         // 双人模式按钮
         doubleMode = new JButton("双人模式");
         doubleMode.setFont(new Font("仿宋", Font.BOLD, 40));
-        doubleMode.setBounds(24 * 10, 600, 24 * 15, 24 * 2);
-        doubleMode.setBackground(Color.BLUE);
+        doubleMode.setBounds(24 * 10, 600, 24 * 13, 24 * 2);
+        doubleMode.setBackground(Color.CYAN);
 
         // 退出按钮
         exit = new JButton("退出游戏");
         exit.setFont(new Font("仿宋", Font.BOLD, 40));
-        exit.setBounds(24 * 10, 700, 24 * 15, 24 * 2);
+        exit.setBounds(24 * 10, 700, 24 * 13, 24 * 2);
         exit.setBackground(Color.GREEN);
 
         // 单人模式按钮点击事件
